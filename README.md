@@ -5,7 +5,7 @@
 liste des étapes pour modifier du code:
 cloner le projet (ou utiliser le ssh):
 ```
-git clone https://github.com/JujuDesFruits/Tell-me-a-story.git
+git clone https://github.com/JujuDesFruits/GuessWhat.git
 ```
 créer votre branche
 ```
