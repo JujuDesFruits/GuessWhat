@@ -27,3 +27,17 @@ git pull
 git checkout "nom_de_la_branche"
 git pull . master
 ```
+
+# Install dependencies
+```
+$ npm run cordova-prepare
+```
+
+# Run app
+```
+$ npm run serve # Development Web
+$ npm run build # Build Web
+$ npm run cordova-serve-android # Development Android 
+$ npm run cordova-build-android # Build Android 
+$ npm run cordova-build-only-www-android 
+```
