@@ -7,3 +7,8 @@ export interface IUser {
   firstName: string
   lastName: string
 }
+
+export interface UserLoginOptions {
+  identifier: string
+  password: string
+}
