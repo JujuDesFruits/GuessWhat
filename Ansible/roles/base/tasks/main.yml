@@ -1,0 +1,28 @@
+- name: update & upgrade apt package
+  apt:
+    upgrade: yes
+    update: yes
+    cache_valid_time: 86400 #One day
+
+- name: ensure packages is install
+  package:
+    name:
+      - ssh
+      - openssh-client
+      - openssh-server
+      - vim
+      - ufw
+
+- name: rules firewall
+  ufw:
+    rules: allow
+    port: "{{item}}"
+  with_items:
+    - 22
+    - 80
+    - 443
+
+- name: start firewall
+  ufw:
+    state: enabled
+    policy: reject

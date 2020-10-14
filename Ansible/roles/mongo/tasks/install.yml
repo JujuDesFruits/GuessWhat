@@ -1,0 +1,31 @@
+- name: Check if mongo is installed
+  command: dpkg-query -W mongodb-org-server
+  register: mongo_check_deb
+  failed_when: mongo_check_deb.rc > 1
+  changed_when: mongo_check_deb.rc == 1
+
+- name: copy packages
+  copy:
+    src: "roles/mongo/deb/{{item}}"
+    dest: "/tmp/{{item}}"
+  with_items:
+    - mongodb-org-server_{{version}}_amd64.deb
+    - mongodb-org-mongos_{{version}}_amd64.deb
+    - mongodb-org-tools_{{version}}_amd64.deb
+    - mongodb-org-shell_{{version}}_amd64.deb
+  when: mongo_check_deb.rc == 1
+
+- name: install packages
+  apt:
+    deb: "{{item}}"
+  with_items:
+    - /tmp/mongodb-org-server_{{version}}_amd64.deb
+    - /tmp/mongodb-org-mongos_{{version}}_amd64.deb
+    - /tmp/mongodb-org-tools_{{version}}_amd64.deb
+    - /tmp/mongodb-org-shell_{{version}}_amd64.deb
+  when: mongo_check_deb.rc == 1
+
+- name: add rule firewall
+  ufw:
+    rules: allow
+    port: 27017

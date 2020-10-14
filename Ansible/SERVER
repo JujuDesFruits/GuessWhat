@@ -1,0 +1,5 @@
+[story_server]
+tell-me-a-story.onthewifi.com ansible_connection=ssh  ansible_user=root
+
+[save_server]
+am-i-an.unusualperson.com ansible_connection=ssh  ansible_user=jtrijean
