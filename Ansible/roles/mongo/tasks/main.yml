@@ -1,0 +1,8 @@
+- include: install.yml
+  when: version is defined
+
+- include: dumpMongo.yml
+  when: dump_time is defined
+
+- include: collectDump.yml
+  when: collect_time is defined

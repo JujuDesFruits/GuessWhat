@@ -1,0 +1,21 @@
+- name: update & upgrade apt package
+  apt:
+    upgrade: yes
+    update: yes
+    cache_valid_time: 86400 #One day
+
+- name: check dump folder exist
+  file:
+    path: /home/jtrijean/dump_story/
+    state: directory
+
+- name: script collect dump
+  template:
+    src: collectDump.sh
+    dest: /usr/local/bin/collectDump.sh
+
+- name: start cron daily collect
+  cron:
+    name: "collect dump"
+    hour: "{{collect_time}}"
+    job: "sh /usr/local/bin/collectDump.sh"
