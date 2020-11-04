@@ -1,10 +1,10 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">
-      name:{{ name }}
+      name: {{ name }}
     </div>
     <div class="dashboard-text">
-      roles:<span
+      roles: <span
         v-for="role in roles"
         :key="role"
       >{{ role }}</span>
@@ -21,11 +21,11 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class extends Vue {
   get name() {
-    return 'UserModule.name'
+    return 'Name User'
   }
 
   get roles() {
-    return 'UserModule.roles'
+    return 'Role User'
   }
 }
 </script>
