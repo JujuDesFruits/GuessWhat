@@ -8,7 +8,7 @@ class User extends VuexModule implements IUser {
   public id = -1;
   public mail = '';
   public token = getToken() || '';
-  public roles : string[] = [];
+  public roles: string[] = [];
   public firstName = '';
   public lastName = '';
   public username = '';
