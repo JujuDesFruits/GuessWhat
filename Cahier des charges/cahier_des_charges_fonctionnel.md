@@ -23,6 +23,8 @@ Nous souhaitons donc réaliser une application mobile compatible Play Store (And
 - Page d'accueil, onglet de catégories, outil de recherche, onglet profils, onglet dashboard, création d'un salon (la contrainte du temps rend optionnel ce dernier)
 - Page catégories
 - Page profil
+- Page dashboard
+- Page Salon
 ### Critères D'appréciation
 ### Niveaux des critères d'appréciation
 
