@@ -7,27 +7,45 @@ auteur [Julien TRIJEAN](https://www.linkedin.com/in/julien-trijean-21183a147) Et
 ### MongoDB
 ### Format Données
 Les données sont enregistré au format document.
-Il y'a deux type de données: Les Questions, et les utilisateurs
 Les utilisatueurs ont leur données enregistré sous le format suivant:
 ```
 {
   userID: ObjectID ,
   userConn: {userLogin: "login", userPWD: "password"},
-  userEmail: "email"
+  userEmail: "email",
+  points: int
 }
 ```
-Les questions ont leur données enregistrées au format suivant:
+Les réponses des utilisateurs sont enregistrés aux format suivant:
 ```
 {
+  userID: ObjectID,
+  QuestionID: ObjectID,
+  choice: "",
+  points: int
+}
+```
+Les questions ont leurs données enregistrées au format suivant:
+```
+{
+  QuestionID: ObjectID,
   userID: ObjectID ,
-  Date: Date("<YYYY-mm-dd>") ISODate,
-  DateEnd: Date("<YYYY-mm-dd_THH:MM:ss>")
+  DateStart: Date("<YYYY-mm-dd>") ISODate,
+  DateEnd: Date("<YYYY-mm-dd_THH:MM:ss>"),
   categorie: "categorie",
-  question: ""
+  question: "String",
   like: int,
-  report: int,
-  answer: {"rep 1", "rep2",...}
-  soluc: "rep1"
+  answer: {"rep1", "rep2",...},
+  soluc: "rep1",
+  lang: "String"
+}
+```
+Les abus seront enregistré de la manière suivante
+```
+{
+  QuestionID: ObjectID,
+  userID: ObjectID,
+  reportReason: "String"
 }
 ```
 **Attention** Etant sur Mongo, si certain champ sont NULL, alors ils n'ont pas lieux d'exister sur une BDD type document.
