@@ -10,9 +10,9 @@ Les données sont enregistré au format document.
 Les utilisatueurs ont leur données enregistré sous le format suivant:
 ```
 {
-  userID: ObjectID ,
-  userConn: {userLogin: "login", userPWD: "password"},
-  userEmail: "email",
+  userID: ObjectID,
+  userConn: {userEmail: "email", userPWD: "password"},
+  userPseudo: "pseudo",
   points: int
 }
 ```
@@ -29,7 +29,7 @@ Les questions ont leurs données enregistrées au format suivant:
 ```
 {
   QuestionID: ObjectID,
-  userID: ObjectID ,
+  userPseudo: "pseudo",
   DateStart: Date("<YYYY-mm-dd>") ISODate,
   DateEnd: Date("<YYYY-mm-dd_THH:MM:ss>"),
   categorie: "categorie",

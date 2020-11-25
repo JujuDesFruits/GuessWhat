@@ -21,8 +21,8 @@ Ce projet est porté par une équipe de 7 étudiants: 2 Développeurs , 3 Market
 Nous souhaitons donc réaliser une application mobile compatible Play Store (Android) et un site web. Les deux plateformes contienne les mêmes services:
 - Page de log, création d'un compte, oublie du mot de passe.
 - Page d'accueil, onglet de catégories, outil de recherche, onglet profils, onglet dashboard, création d'un salon (la contrainte du temps rend optionnel ce dernier)
-- Page catégories
-- Page profil
+- Page d'une catégorie, fitre par défaut des questions du jour, en cliquant sur la questions on peut parier sur la réponse, liker la question ou reporter un abus
+- Page profil, 
 - Page dashboard
 - Page Salon
 ### Critères D'appréciation
