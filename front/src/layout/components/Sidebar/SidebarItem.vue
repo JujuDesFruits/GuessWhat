@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!item.meta || !item.meta.hidden"
+    v-if="!item.meta || !isHidden"
     :class="['menu-wrapper', isCollapse ? 'simple-mode' : 'full-mode', {'first-level': isFirstLevel}]"
   >
     <template v-if="theOnlyOneChild && !theOnlyOneChild.children">
@@ -72,6 +72,7 @@ import SidebarItemLink from './SidebarItemLink.vue'
 export default class extends Vue {
   @Prop({ required: true }) private item!: RouteConfig
   @Prop({ default: false }) private isCollapse!: boolean
+  @Prop({ default: false }) private isHidden!: boolean
   @Prop({ default: true }) private isFirstLevel!: boolean
   @Prop({ default: '' }) private basePath!: string
 

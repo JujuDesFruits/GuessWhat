@@ -1,17 +1,23 @@
 <template>
   <div
-    :class="classObj"
-    class="app-wrapper"
+    
+    class=""
   >
+    <SuperNavbar />
     <div
-      v-if="classObj.mobile && sidebar.opened"
-      class="drawer-bg"
-      @click="handleClickOutside"
-    />
-    <sidebar class="sidebar-container" />
-    <div class="main-container">
-      <navbar />
-      <app-main />
+      :class="classObj"
+      class="app-wrapper"
+    >
+      <div
+        v-if="classObj.mobile && sidebar.opened"
+        class="drawer-bg"
+        @click="handleClickOutside"
+      />
+      <sidebar class="sidebar-container" />
+      <div class="main-container">
+        <navbar />
+        <app-main />
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +27,7 @@ import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 import { DeviceType, AppModule } from './../store/modules/app'
 import { AppMain, Navbar, Sidebar } from './components'
+import SuperNavbar from './components/SuperNavbar/index.vue'
 import ResizeMixin from './mixin/resize'
 
 @Component({
@@ -28,6 +35,7 @@ import ResizeMixin from './mixin/resize'
   components: {
     AppMain,
     Navbar,
+    SuperNavbar,
     Sidebar
   }
 })

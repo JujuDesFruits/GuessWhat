@@ -35,12 +35,14 @@ export default new Router({
       path: '/',
       component: Layout,
       redirect: '/dashboard',
+      name: 'Accueil',
+      meta: { hidden: true },
       children: [
         {
           path: 'dashboard',
           component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
           meta: {
-            title: 'Dashboard',
+            title: 'Accueil',
             icon: 'dashboard'
           }
         }
@@ -49,21 +51,105 @@ export default new Router({
     {
       path: '/about',
       name: 'About',
+      meta: { hidden: true },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     },
     {
-      path: '/form',
+      path: '/top-questions',
       component: Layout,
+      name: 'TopQuestions',
+      meta: { hidden: true },
       children: [
         {
-          path: 'index',
-          component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue'),
+          path: '',
+          component: () => import(/* webpackChunkName: "topquestions" */ '@/views/topquestions/index.vue'),
           meta: {
-            title: 'Form',
-            icon: 'form'
+            title: 'Top Questions',
+            icon: 'trophy',
+            hidden: false
+          }
+        }
+      ]
+    },
+    {
+      path: '/classement',
+      component: Layout,
+      name: 'Classement',
+      meta: { hidden: true },
+      children: [
+        {
+          path: '',
+          component: () => import(/* webpackChunkName: "classement" */ '@/views/classement/index.vue'),
+          meta: {
+            title: 'Classement',
+            icon: 'podium-gold'
+          }
+        }
+      ]
+    },
+    {
+      path: '/categorie/all',
+      component: Layout,
+      name: 'Catégories',
+      meta: { hidden: true },
+      children: [
+        {
+          path: '',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/index.vue'),
+          meta: {
+            title: 'Catégories',
+            icon: 'podium-gold'
+          }
+        }
+      ]
+    },
+    {
+      path: '/categorie',
+      redirect: '/categorie/all',
+      component: Layout,
+      meta: {
+        title: 'Catégories',
+        icon: 'example',
+        hidden: false
+      },
+      children: [
+        {
+          path: 'sport',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/sport.vue'),
+          meta: {
+            title: 'Sport',
+            icon: 'soccer-field',
+            hidden: true
+          }
+        },
+        {
+          path: 'music',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
+          meta: {
+            title: 'Musique',
+            icon: 'music',
+            hidden: false
+          }
+        },
+        {
+          path: 'politic',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
+          meta: {
+            title: 'Politique',
+            icon: 'scale-balance',
+            hidden: false
+          }
+        },
+        {
+          path: 'cinema',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
+          meta: {
+            title: 'Cinéma',
+            icon: 'theater',
+            hidden: false
           }
         }
       ]

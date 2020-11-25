@@ -8,14 +8,34 @@
       :active-text-color="variables.menuActiveText"
       :unique-opened="false"
       :collapse-transition="false"
+      :default-openeds="['/categorie']"
       mode="vertical"
     >
+      <sidebar-item
+        :item="routeAccueil"
+        :base-path="routeAccueil.path"
+        :is-collapse="isCollapse"
+        :isHidden="false"
+      />
+      <sidebar-item
+        :item="routeTopQuestion"
+        :base-path="routeTopQuestion.path"
+        :is-collapse="isCollapse"
+        :isHidden="!isMobile()"
+      />
+      <sidebar-item
+        :item="routeClassement"
+        :base-path="routeClassement.path"
+        :is-collapse="isCollapse"
+        :isHidden="!isMobile()"
+      />
       <sidebar-item
         v-for="route in routes"
         :key="route.path"
         :item="route"
         :base-path="route.path"
         :is-collapse="isCollapse"
+        :isHidden="route.meta.hidden"
       />
     </el-menu>
   </el-scrollbar>
@@ -23,7 +43,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { AppModule } from './../../../store/modules/app'
+import { AppModule, DeviceType } from './../../../store/modules/app'
 import SidebarItem from './SidebarItem.vue'
 import variables from './../../../styles/_variables.scss'
 
@@ -34,6 +54,24 @@ import variables from './../../../styles/_variables.scss'
   }
 })
 export default class extends Vue {
+  private getRouteObj(routename) {
+    for (let index = 0; index < (this.$router as any).options.routes.length; index++) {
+      const element = (this.$router as any).options.routes[index];
+      if (element.name == routename) {
+        return element;
+      }
+    }
+  }
+
+  private isMobile() {
+    return AppModule.device === DeviceType.Mobile;
+  }
+
+  private routeAccueil = this.getRouteObj('Accueil');
+  private routeClassement = this.getRouteObj('Classement');
+  private routeTopQuestion = this.getRouteObj('TopQuestions');
+
+
   get sidebar() {
     return AppModule.sidebar
   }
@@ -90,7 +128,8 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
 .el-scrollbar {
-  height: 100%
+  height: calc(100% - 50px) !important;
+  top: 50px !important;
 }
 
 .el-menu {
