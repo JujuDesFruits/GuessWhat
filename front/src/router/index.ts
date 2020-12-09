@@ -60,11 +60,12 @@ export default new Router({
     {
       path: '/top-questions',
       component: Layout,
-      name: 'TopQuestions',
       meta: { hidden: true },
+      name: 'TopQuestions',
       children: [
         {
           path: '',
+          name: 'TopQuestionsPage',
           component: () => import(/* webpackChunkName: "topquestions" */ '@/views/topquestions/index.vue'),
           meta: {
             title: 'Top Questions',
@@ -82,6 +83,7 @@ export default new Router({
       children: [
         {
           path: '',
+          name: 'ClassementPage',
           component: () => import(/* webpackChunkName: "classement" */ '@/views/classement/index.vue'),
           meta: {
             title: 'Classement',

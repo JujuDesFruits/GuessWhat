@@ -8,7 +8,6 @@
       :active-text-color="variables.menuActiveText"
       :unique-opened="false"
       :collapse-transition="false"
-      :default-openeds="['/categorie']"
       mode="vertical"
     >
       <sidebar-item

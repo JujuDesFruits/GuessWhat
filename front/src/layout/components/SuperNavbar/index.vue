@@ -1,28 +1,22 @@
 <template>
   <div class="navbar">
-    <!-- <hamburger
-      id="hamburger-container"
-      :is-active="sidebar.opened"
-      class="hamburger-container"
-      @toggle-click="toggleSideBar"
-    /> -->
-    <!-- <breadcrumb
-      id="breadcrumb-container"
-      class="breadcrumb-container"
-    /> -->
     <div class="supernav-items" style="float: left">
       <div class="logo-container">
         <el-image style="width: 100; height: 45px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="contain" ></el-image>
         </div>
       <el-button-group class="btn-group-supernav" v-if="!isMobile()" >
-        <el-button type="light" size="small" @click="goBack">
-          <svg-icon :name="'trophy'" style="margin-end: 5px" />
-          Top Questions
-        </el-button>
-        <el-button type="light" size="small" @click="goBack">
-          <svg-icon :name="'podium-gold'" style="margin-end: 5px" />
-          Classement</el-button
-        >
+        <router-link :to="{name: 'TopQuestionsPage'}">
+          <el-button type="light" size="small" >
+            <svg-icon :name="'trophy'" style="margin-end: 5px" />
+            Top Questions
+          </el-button>
+        </router-link>
+        <router-link :to="{name: 'ClassementPage'}">
+          <el-button type="light" size="small" @click="goBack">
+            <svg-icon :name="'podium-gold'" style="margin-end: 5px" />
+            Classement</el-button
+          >
+        </router-link>
       </el-button-group>
       <el-input v-model="data.searchText" placeholder="Rechercher" size="small" prefix-icon="el-icon-search" clearable @change="onSearch()"></el-input>
     </div>
