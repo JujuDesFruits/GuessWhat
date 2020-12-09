@@ -21,13 +21,37 @@ Ce projet est porté par une équipe de 7 étudiants: 2 Développeurs , 3 Market
 Nous souhaitons donc réaliser une application mobile compatible Play Store (Android) et un site web. Les deux plateformes contienne les mêmes services:
 - Page de log, création d'un compte, oublie du mot de passe.
 - Page d'accueil, onglet de catégories, outil de recherche, onglet profils, onglet dashboard, création d'un salon (la contrainte du temps rend optionnel ce dernier)
-- Page d'une catégorie, fitre par défaut des questions du jour, en cliquant sur la questions on peut parier sur la réponse, liker la question ou reporter un abus
-- Page profil, 
-- Page dashboard
-- Page Salon
+- Page d'une catégorie, fitre par défaut des questions du jour, en cliquant sur la questions on peut parier sur la réponse, liker la question ou reporter un abus. Il y'a aussi un filtre pour le top des questions, les nouvelles questions.
+- Page profil, permet de cliquer sur des onglet comme les info utilisateurs avec la possibilité de changer son mot de passe. Il y'a les statistiques utilisateurs, et un historique ses questions réponses données.
+- Page dashboard, permet d'afficher les personnes ayant remportées le plus de points. Celle ayant obtenue le plus de points dans la semaine. Les personnes ayant le plus posées de questions seront aussi affiché.
+- Page Salon, pour inviter des amis à jouer ensemble via un code (?). une fois dans le même salon un nbx de point et réparti entre joueur et une personne est choisi comme poseur de question. Les autres mise, celui qui pose la question est choisi à la fin d'une question.
+
 ### Critères D'appréciation
+Les critères determiants pour l'évaluation des proositions sont la capacité à permettre à un utilisateur de se connecter à un compte pour pouvoir poser et répondre à des questions.   
+La réussite du projet fluctura en fonction du nombre de fonctionnalités disponible en plus des simples questions/réponses.
+
 ### Niveaux des critères d'appréciation
+Ceci est un classement ordonnée des priorité par ordre décroissant (du plus important au moins important):
+- Création et connection à un compte
+- Répondre aux questions
+- Poser des questions
+- Ordonner et classer les questions
+- Gestion du mdp oublié
+- Proposer du reporting
+- Classement
+- Changer de langue/région
+- Récompense quotidienne
+- Stats utilisateurs
+- Outil de recherche
+- Création d'un salon privé
 
 ## Cadre de réponse
 ### Pour chaque besoin
+Pour le besoin de connection utilisateur, un serveur de base de données doit être disponible h24. ce dernier doit être laintenu en période creuse uniquementet fait l'oeuvre d'alerting en cas d'anomalie.   
+Pour le besoin d'envoie de mail, dans le cadre de mot de passe oublié ou de rappel de question à répondre, un serveur SMTP doit être disponible h24 et faire l'oeuvre de maintenance en période creuse.   
+Pour le besoin de répondre aux questions réponse, il est nécessaire de disposer d'une appli mobile (android) et une page web.   
+Pour le besoin d'intuitivité, et d'accessiblilité, il faut pouvoir rendre une application simple d'usage avec une chartes graphique définit en fonction de son utilisateur cible.   
+Pour des besoins d'impacte clientèle, il est important de prévoir un plan de com.
+
 ### Pour l'ensemble du produit
+Le prix de la réalisation n'est pas à prendre en compte puis ce qu'il s'agit d'un projet éducatif à but non lucratif, sans fond ni gain. Le projet est amené à évoluer en fonction de l'avancé de ce dernier. Cependant, rappelons qui ne sera travaillé uniquement pendant les périodes horaires attribué au projet: 1 Mercredi sur deux hors vacances scolaire (un cumul de 12 séances). Le contexte covid oblige le télétravail ce qui pourrait amené certains retards liéà la difficulté du travail en groupe inter corps de métiers.
