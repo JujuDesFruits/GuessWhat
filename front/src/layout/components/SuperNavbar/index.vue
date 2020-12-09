@@ -6,13 +6,13 @@
         </div>
       <el-button-group class="btn-group-supernav" v-if="!isMobile()" >
         <router-link :to="{name: 'TopQuestionsPage'}">
-          <el-button type="light" size="small" >
+          <el-button type="light" size="small">
             <svg-icon :name="'trophy'" style="margin-end: 5px" />
             Top Questions
           </el-button>
         </router-link>
         <router-link :to="{name: 'ClassementPage'}">
-          <el-button type="light" size="small" @click="goBack">
+          <el-button type="light" size="small" style="margin-left: 5px">
             <svg-icon :name="'podium-gold'" style="margin-end: 5px" />
             Classement</el-button
           >
