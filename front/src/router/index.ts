@@ -16,7 +16,7 @@ Vue.use(Router);
 */
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   scrollBehavior: (to, from, savedPosition) => {
     if (savedPosition) {
       return savedPosition
@@ -43,7 +43,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
           meta: {
             title: 'Accueil',
-            icon: 'dashboard'
+            icon: 'home'
           }
         }
       ]
@@ -91,7 +91,7 @@ export default new Router({
       ]
     },
     {
-      path: '/categorie/all',
+      path: '/categorie',
       component: Layout,
       name: 'Catégories',
       meta: { hidden: true },
@@ -108,51 +108,115 @@ export default new Router({
     },
     {
       path: '/categorie',
-      redirect: '/categorie/all',
       component: Layout,
-      meta: {
-        title: 'Catégories',
-        icon: 'example',
-        hidden: false
-      },
+      meta: { hidden: false, title: "Catégorie" },
       children: [
         {
           path: 'sport',
+          name: 'Sport',
           component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/sport.vue'),
           meta: {
             title: 'Sport',
-            icon: 'soccer-field',
-            hidden: true
-          }
-        },
-        {
-          path: 'music',
-          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
-          meta: {
-            title: 'Musique',
-            icon: 'music',
-            hidden: false
-          }
-        },
-        {
-          path: 'politic',
-          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
-          meta: {
-            title: 'Politique',
-            icon: 'scale-balance',
-            hidden: false
-          }
-        },
-        {
-          path: 'cinema',
-          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
-          meta: {
-            title: 'Cinéma',
-            icon: 'theater',
-            hidden: false
+            icon: 'soccer-field'
           }
         }
       ]
-    }
+    },
+    {
+      path: '/categorie',
+      component: Layout,
+      meta: { hidden: false, title: "Catégorie" },
+      children: [
+        {
+          path: 'music',
+          name: 'Musique',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
+          meta: {
+            title: 'Musique',
+            icon: 'music'
+          }
+        }
+      ]
+    },
+    {
+      path: '/categorie',
+      component: Layout,
+      meta: { hidden: false, title: "Catégorie" },
+      children: [
+        {
+          path: 'politic',
+          name: 'Politique',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
+          meta: {
+            title: 'Politique',
+            icon: 'scale-balance'
+          }
+        }
+      ]
+    },
+    {
+      path: '/categorie',
+      component: Layout,
+      meta: { hidden: false, title: "Catégorie" },
+      children: [
+        {
+          path: 'cinema',
+          name: 'Cinéma',
+          component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
+          meta: {
+            title: 'Cinéma',
+            icon: 'theater'
+          }
+        }
+      ]
+    },
+    // {
+    //   path: '/categorie',
+    //   redirect: '/categorie/all',
+    //   component: Layout,
+    //   meta: {
+    //     title: 'Catégories',
+    //     icon: 'example',
+    //     hidden: false
+    //   },
+    //   children: [
+    //     {
+    //       path: 'sport',
+    //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/sport.vue'),
+    //       meta: {
+    //         title: 'Sport',
+    //         icon: 'soccer-field',
+    //         hidden: true
+    //       }
+    //     },
+    //     {
+    //       path: 'music',
+    //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
+    //       meta: {
+    //         title: 'Musique',
+    //         icon: 'music',
+    //         hidden: false
+    //       }
+    //     },
+    //     {
+    //       path: 'politic',
+    //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
+    //       meta: {
+    //         title: 'Politique',
+    //         icon: 'scale-balance',
+    //         hidden: false
+    //       }
+    //     },
+    //     {
+    //       path: 'cinema',
+    //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
+    //       meta: {
+    //         title: 'Cinéma',
+    //         icon: 'theater',
+    //         hidden: false
+    //       }
+    //     }
+    //   ]
+    // }
   ]
 });
