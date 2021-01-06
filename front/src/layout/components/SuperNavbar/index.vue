@@ -54,7 +54,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { DeviceType, AppModule } from "./../../../store/modules/app";
-// import { UserModule } from '@/store/modules/user'
+import { UserModule } from '@/store/modules/UserModule'
 import Breadcrumb from "./../../../components/Breadcrumb/index.vue";
 import Hamburger from "./../../../components/Hamburger/index.vue";
 
@@ -72,7 +72,7 @@ export default class extends Vue {
 
   private onSearch() {
     console.log(this.data.searchText);
-    
+
   }
 
   get sidebar() {
@@ -101,8 +101,8 @@ export default class extends Vue {
   }
 
   private async logout() {
-    // await UserModule.LogOut()
-    // this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    await UserModule.ResetToken()
+    this.$router.push(`/login?redirect=${this.$route.fullPath}`)
   }
 }
 </script>
