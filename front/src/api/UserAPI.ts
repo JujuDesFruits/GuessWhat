@@ -21,8 +21,15 @@ export const forgotPassword = (data: UserForgotPassword) =>
     data
   });
 
+export const getUserInfo = () =>
+  request({
+    url: '/users/me/',
+    method: 'get'
+  });
+
 export default {
   login,
   logout,
-  forgotPassword
+  forgotPassword,
+  getUserInfo
 };

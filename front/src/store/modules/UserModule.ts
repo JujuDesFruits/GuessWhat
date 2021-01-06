@@ -11,6 +11,8 @@ class User extends VuexModule implements IUser {
   public token = getToken() || '';
   public roles: string[] = [];
   public username = '';
+  public createdAt = new Date();
+  public points = 0;
 
   /** Mutations **/
   @Mutation
@@ -38,6 +40,17 @@ class User extends VuexModule implements IUser {
     this.roles = roles;
   }
 
+  @Mutation
+  private SET_CREATEDAT(createdAt: Date) {
+    this.createdAt = createdAt;
+  }
+
+  @Mutation
+  private SET_POINTS(points: number) {
+    this.points = points
+  }
+
+
   /** Actions **/
   @Action({ rawError: true })
   public async Login(userInfo: UserLoginOptions) {
@@ -47,6 +60,26 @@ class User extends VuexModule implements IUser {
       this.SET_TOKEN(user.jwt);
       this.SET_ROLES([user.user.role.name])
     });
+  }
+
+  @Action
+  public async GetUserInfo() {
+    if (this.token === '') {
+      throw Error('GetUserInfo: token is undefined!');
+    }
+    await UserAPI.getUserInfo()
+      .then((response: any) => {
+        const user: any = response.data
+        this.SET_ROLES([user.role.name])
+        this.SET_USERNAME(user.username)
+        this.SET_MAIL(user.email)
+        this.SET_ID(user.id)
+        this.SET_CREATEDAT(user.createdAt)
+        this.SET_POINTS(user.points)
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
   }
 
   @Action

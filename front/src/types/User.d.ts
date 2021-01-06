@@ -4,6 +4,8 @@ export interface IUser {
   token: string
   username: string
   roles: string[]
+  createdAt: Date | null
+  points: number
 }
 
 export interface UserLoginOptions {
