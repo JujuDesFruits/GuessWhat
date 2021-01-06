@@ -1,5 +1,5 @@
 import request from '@/utils/request';
-import { UserLoginOptions } from '@/types/User';
+import {UserForgotPassword, UserLoginOptions} from '@/types/User';
 
 export const login = (data: UserLoginOptions) =>
   request({
@@ -8,6 +8,21 @@ export const login = (data: UserLoginOptions) =>
     data
   });
 
+export const logout = () =>
+  request({
+    url: '/auth/logout/',
+    method: 'post'
+  });
+
+export const forgotPassword = (data: UserForgotPassword) =>
+  request({
+    url: '/auth/forgot-password/',
+    method: 'post',
+    data
+  });
+
 export default {
-  login
+  login,
+  logout,
+  forgotPassword
 };

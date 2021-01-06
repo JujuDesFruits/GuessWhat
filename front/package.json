@@ -26,11 +26,13 @@
   },
   "dependencies": {
     "@types/js-cookie": "^2.2.6",
+    "@types/nprogress": "^0.2.0",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.4.5",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
     "path-to-regexp": "^6.2.0",
     "style-resources-loader": "^1.3.3",
     "vue": "^2.6.11",

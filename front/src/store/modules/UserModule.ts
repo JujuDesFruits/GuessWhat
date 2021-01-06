@@ -1,7 +1,8 @@
 import { VuexModule, Module, Action, Mutation, getModule } from 'vuex-module-decorators';
-import { getToken, removeToken } from '@/utils/cookies';
+import {getToken, removeToken, setToken} from '@/utils/cookies';
 import store from '@/store';
-import { IUser } from '@/types/User';
+import {IUser, UserLoginOptions} from '@/types/User';
+import UserAPI from "@/api/UserAPI";
 
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUser {
@@ -9,8 +10,6 @@ class User extends VuexModule implements IUser {
   public mail = '';
   public token = getToken() || '';
   public roles: string[] = [];
-  public firstName = '';
-  public lastName = '';
   public username = '';
 
   /** Mutations **/
@@ -39,20 +38,25 @@ class User extends VuexModule implements IUser {
     this.roles = roles;
   }
 
-  @Mutation
-  private SET_FIRSTNAME(firstName: string) {
-    this.firstName = firstName;
-  }
-
-  @Mutation SET_LASTNAME(lastName: string) {
-    this.lastName = lastName;
+  /** Actions **/
+  @Action({ rawError: true })
+  public async Login(userInfo: UserLoginOptions) {
+    await UserAPI.login(userInfo).then((response: any) => {
+      const user: any = response.data
+      setToken(user.jwt);
+      this.SET_TOKEN(user.jwt);
+      this.SET_ROLES([user.user.role.name])
+    });
   }
 
   @Action
-  public ResetToken() {
-    removeToken();
-    this.SET_TOKEN('');
-    this.SET_ROLES([]);
+  public async ResetToken() {
+    await new Promise((resolve, reject) => {
+      removeToken();
+      this.SET_TOKEN('');
+      this.SET_ROLES([]);
+      resolve({});
+    });
   }
 }
 

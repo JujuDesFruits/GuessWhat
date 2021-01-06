@@ -11,7 +11,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import '@/icons/components'
-// import '@/permission'
+import '@/permission'
 
 
 Vue.config.productionTip = false;
