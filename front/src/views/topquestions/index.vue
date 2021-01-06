@@ -3,15 +3,15 @@
     <el-container direction="vertical">
       <el-header height="">
         <!-- Header content -->
-        <h1>Header {{ name }} content</h1>
+        <h1>Header {{ name }}</h1>
       </el-header>
         <el-container direction="vertical">
-          <el-main height="">
+          <el-main>
             <div>
-              <itemQuestion v-for="question in questions" :key="question._id" :question="question"></itemQuestion>
+              <itemQuestion v-for="question in questions" :key="question.id" :question="question"></itemQuestion>
             </div>
           </el-main>
-          <el-footer height="">
+          <el-footer>
             <!-- Footer content -->
           </el-footer>
       </el-container>
@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import itemQuestion from "./../../components/Questions/Item.vue";
+import itemQuestion from "./../../components/Questions/index.vue";
 // import { UserModule } from '@/store/modules/user'
 
 @Component({
@@ -37,7 +37,7 @@ export default class extends Vue {
 
   private questions: Array<object> = [
     {
-      _id: 1,
+      id: 1,
       userPseudo: "Ronaldo",
       dateStart: Date(),
       dateEnd: Date(),
@@ -49,7 +49,7 @@ export default class extends Vue {
       lang: "fr"
     },
     {
-      _id: 2,
+      id: 2,
       userPseudo: "IronMan",
       dateStart: Date(),
       dateEnd: Date(),
@@ -61,7 +61,7 @@ export default class extends Vue {
       lang: "fr"
     },
     {
-      _id: 3,
+      id: 3,
       userPseudo: "FrançoisMaldives",
       dateStart: Date(),
       dateEnd: Date(),
