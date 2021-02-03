@@ -3,10 +3,10 @@ export interface IQuestion {
   userPseudo: string
   dateStart: date
   dateEnd: date
-  categorie: string
+  category: string
   question: string
   like: number
-  answer: string[]
+  answers: string[]
   soluce: string
   lang: string
 }
