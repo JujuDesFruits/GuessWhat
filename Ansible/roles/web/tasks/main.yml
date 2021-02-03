@@ -1,0 +1,7 @@
+- name: rules firewall
+  ufw:
+    rules: allow
+    port: "{{item}}"
+  with_items:
+    - 80
+    - 443
