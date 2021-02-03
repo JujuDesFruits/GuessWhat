@@ -7,6 +7,7 @@
       </el-header>
         <el-container direction="vertical">
           <el-main>
+            <formQuestion ></formQuestion>
             <div>
               <itemQuestion v-for="question in questions" :key="question.id" :question="question"></itemQuestion>
             </div>
@@ -22,12 +23,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import itemQuestion from "./../../components/Questions/index.vue";
-// import { UserModule } from '@/store/modules/user'
+import formQuestion from "../../components/Questions/Form.vue";
 
 @Component({
   name: "TopQuestions",
   components: {
-    itemQuestion
+    itemQuestion,
+    formQuestion
   }
 })
 export default class extends Vue {
@@ -44,7 +46,7 @@ export default class extends Vue {
       categorie: "sport",
       question: "Est-ce que c'est bien le sport ?",
       like: 0,
-      answer: ["Oui", "Non", "Peut-être"],
+      answer: ["Oui", "Non", "Peut-être","Vraiment pas"],
       soluce: "Oui",
       lang: "fr"
     },
