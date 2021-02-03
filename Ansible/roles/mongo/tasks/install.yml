@@ -24,6 +24,7 @@
     - /tmp/mongodb-org-tools_{{version}}_amd64.deb
     - /tmp/mongodb-org-shell_{{version}}_amd64.deb
   when: mongo_check_deb.rc == 1
+  notify: restart Mongo
 
 - name: add rule firewall
   ufw:

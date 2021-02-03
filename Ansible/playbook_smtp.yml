@@ -1,6 +1,6 @@
 ---
-- name: create first layer
+- name: config SMTP serveur
   hosts: Guess_server
   become: yes
   roles:
-    - role: web
+    - role: smtp

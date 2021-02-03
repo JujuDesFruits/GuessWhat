@@ -1,16 +1,15 @@
 ---
 - name: create first layer
-  hosts: story_server
+  hosts: Guess_server
+  become: yes
+  roles:
+    - role: base
+
+- name: config collect dump
+  hosts: save_server
   become: yes
   roles:
     - role: base
     - role: mongo
       version: 4.0.11
       dump_time: 1 #hours you want to dump
-
-- name: config collect dump
-  hosts: save_server
-  become: yes
-  roles:
-    - role: mongo
-      collect_time: 2 #hours you want to collect

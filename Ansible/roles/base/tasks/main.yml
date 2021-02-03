@@ -16,11 +16,7 @@
 - name: rules firewall
   ufw:
     rules: allow
-    port: "{{item}}"
-  with_items:
-    - 22
-    - 80
-    - 443
+    port: 22
 
 - name: start firewall
   ufw:
