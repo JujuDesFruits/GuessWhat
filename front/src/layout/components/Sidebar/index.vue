@@ -1,5 +1,5 @@
 <template>
-  <el-scrollbar wrap-class="scrollbar-wrapper">
+  <el-scrollbar wrap-class="scrollbar-wrapper" v-if="!isCollapse">
     <el-menu
       :default-active="activeMenu"
       :collapse="isCollapse"
@@ -107,6 +107,12 @@ export default class extends Vue {
 
   .scrollbar-wrapper {
     overflow-x: hidden !important;
+    background: rgb(244,151,26);
+    background: linear-gradient(180deg, rgba(244,151,26,1) 0%, rgba(130,61,144,1) 100%);
+
+    .el-menu {
+      background: none;
+    }
   }
 
   .el-scrollbar__view {

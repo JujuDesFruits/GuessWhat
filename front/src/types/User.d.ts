@@ -4,6 +4,15 @@ export interface IUser {
   token: string
   username: string
   roles: string[]
-  firstName: string
-  lastName: string
+  createdAt: Date | null
+  points: number
+}
+
+export interface UserLoginOptions {
+  identifier: string
+  password: string
+}
+
+export interface UserForgotPassword {
+  email: string
 }

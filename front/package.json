@@ -22,15 +22,18 @@
     "cordova-serve-browser": "cross-env CORDOVA_PLATFORM=browser vue-cli-service cordova-serve-browser",
     "cordova-serve-electron": "cross-env CORDOVA_PLATFORM=electron vue-cli-service cordova-serve-electron",
     "cordova-serve-ios": "cross-env CORDOVA_PLATFORM=ios vue-cli-service cordova-serve-ios",
-    "cordova-serve-osx": "cross-env CORDOVA_PLATFORM=osx vue-cli-service cordova-serve-osx"
+    "cordova-serve-osx": "cross-env CORDOVA_PLATFORM=osx vue-cli-service cordova-serve-osx",
+    "svg": "vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6"
   },
   "dependencies": {
     "@types/js-cookie": "^2.2.6",
+    "@types/nprogress": "^0.2.0",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.4.5",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
     "path-to-regexp": "^6.2.0",
     "style-resources-loader": "^1.3.3",
     "vee-validate": "^3.4.5",
@@ -39,7 +42,6 @@
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-property-decorator": "^8.4.2",
     "vue-router": "^3.2.0",
-    "vue-svgicon": "^3.2.9",
     "vuex": "^3.4.0",
     "vuex-module-decorators": "^1.0.1"
   },
@@ -66,6 +68,7 @@
     "typescript": "~3.9.3",
     "vue-cli-plugin-cordova": "~2.4.1",
     "vue-cli-plugin-element": "~1.0.1",
+    "vue-svgicon": "^3.2.9",
     "vue-template-compiler": "^2.6.11"
   }
 }

@@ -1,18 +1,18 @@
 <template>
   <div class="navbar">
     <div class="supernav-items" style="float: left">
-      <div class="logo-container">
+      <div class="logo-container" @click="toggleSideBar">
         <el-image style="width: 100; height: 45px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="contain" ></el-image>
         </div>
       <el-button-group class="btn-group-supernav" v-if="!isMobile()" >
         <router-link :to="{name: 'TopQuestionsPage'}">
-          <el-button type="light" size="small" >
+          <el-button type="light" size="small">
             <svg-icon :name="'trophy'" style="margin-end: 5px" />
             Top Questions
           </el-button>
         </router-link>
         <router-link :to="{name: 'ClassementPage'}">
-          <el-button type="light" size="small" @click="goBack">
+          <el-button type="light" size="small" style="margin-left: 5px">
             <svg-icon :name="'podium-gold'" style="margin-end: 5px" />
             Classement</el-button
           >
@@ -27,21 +27,11 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/">
+          <router-link to="/profile">
             <el-dropdown-item>
-              Home
+              Mon profil
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/armour/vue-typescript-admin-template/">
-            <el-dropdown-item>
-              Github
-            </el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://armour.github.io/vue-typescript-admin-docs/">
-            <el-dropdown-item>
-              Docs
-            </el-dropdown-item>
-          </a>
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">LogOut</span>
           </el-dropdown-item>
@@ -54,7 +44,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { DeviceType, AppModule } from "./../../../store/modules/app";
-// import { UserModule } from '@/store/modules/user'
+import { UserModule } from '@/store/modules/UserModule'
 import Breadcrumb from "./../../../components/Breadcrumb/index.vue";
 import Hamburger from "./../../../components/Hamburger/index.vue";
 
@@ -72,7 +62,7 @@ export default class extends Vue {
 
   private onSearch() {
     console.log(this.data.searchText);
-    
+
   }
 
   get sidebar() {
@@ -101,8 +91,8 @@ export default class extends Vue {
   }
 
   private async logout() {
-    // await UserModule.LogOut()
-    // this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    await UserModule.ResetToken()
+    this.$router.push(`/login?redirect=${this.$route.fullPath}`)
   }
 }
 </script>
@@ -131,8 +121,6 @@ export default class extends Vue {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: rgb(48, 65, 86);
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
     line-height: 46px;
