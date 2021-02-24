@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div class="supernav-items" style="float: left">
-      <div class="logo-container">
+      <div class="logo-container" @click="toggleSideBar">
         <el-image style="width: 100; height: 45px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="contain" ></el-image>
         </div>
       <el-button-group class="btn-group-supernav" v-if="!isMobile()" >
@@ -121,8 +121,6 @@ export default class extends Vue {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: rgb(48, 65, 86);
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
     line-height: 46px;

@@ -19,7 +19,12 @@ export const constantRoutes: RouteConfig[] = [
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login.vue'),
-    meta: { hidden: true, title: 'Login' }
+    meta: { hidden: true, title: 'Connexion' }
+  },
+  {
+    path: '/register',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/register.vue'),
+    meta: { hidden: true, title: 'Inscription' }
   },
   {
     path: '/forgot',
@@ -71,6 +76,23 @@ export const constantRoutes: RouteConfig[] = [
         component: () => import(/* webpackChunkName: "classement" */ '@/views/classement/index.vue'),
         meta: {
           title: 'Classement',
+          icon: 'podium-gold'
+        }
+      }
+    ]
+  },
+  {
+    path: '/profile',
+    component: Layout,
+    name: 'Mon compte',
+    meta: { hidden: true },
+    children: [
+      {
+        path: '',
+        name: 'ClassementPage',
+        component: () => import(/* webpackChunkName: "classement" */ '@/views/profile/index.vue'),
+        meta: {
+          title: 'Mon compte',
           icon: 'podium-gold'
         }
       }
@@ -173,6 +195,33 @@ export const constantRoutes: RouteConfig[] = [
       }
     ]
   },
+  {
+    path: '/question',
+    redirect: '/question/list',
+    component: Layout,
+    meta: {
+      title: 'Questions',
+      hidden: true
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import(/* webpackChunkName: "question_list" */ '@/views/question/create.vue'),
+        meta: {
+          title: 'Liste des questions',
+          hidden: true
+        }
+      },
+      {
+        path: 'create',
+        component: () => import(/* webpackChunkName: "question_create" */ '@/views/question/create.vue'),
+        meta: {
+          title: 'Ajout d\'une questions',
+          hidden: true
+        }
+      }
+    ]
+  }
   // {
   //   path: '/categorie',
   //   redirect: '/categorie/all',

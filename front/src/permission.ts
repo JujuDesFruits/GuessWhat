@@ -8,7 +8,7 @@ import { PermissionModule } from '@/store/modules/PermissionModule';
 
 NProgress.configure({ showSpinner: false });
 
-const whiteList = ['/login', '/forgot'];
+const whiteList = ['/login', '/forgot', '/register'];
 
 router.beforeEach(async(to: Route, _: Route, next: any) => {
   // Start progress bar

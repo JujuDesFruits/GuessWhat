@@ -11,13 +11,13 @@ $yellow:#FEC171;
 $panGreen: #30B08F;
 
 // Sidebar
-$sideBarWidth: 210px;
-$subMenuBg:#1f2d3d;
-$subMenuHover:#001528;
-$subMenuActiveText:#f4f4f5;
-$menuBg:#304156;
-$menuText:#bfcbd9;
-$menuActiveText:#409EFF; // Also see settings.sidebarTextTheme
+$sideBarWidth: 100%;
+$subMenuBg: none;
+$subMenuHover: none;
+$subMenuActiveText: white;
+$menuBg: none;
+$menuText:white;
+$menuActiveText:white; // Also see settings.sidebarTextTheme
 
 // Login page
 $lightGray: #eee;

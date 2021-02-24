@@ -29,7 +29,21 @@
           name="identifier"
           type="text"
           autocomplete="on"
-          placeholder="Identifiant"
+          placeholder="Nom d'utilisateur"
+        />
+      </el-form-item>
+
+      <el-form-item prop="identifier">
+        <span class="svg-container">
+          <svg-icon name="mail" />
+        </span>
+        <el-input
+          ref="identifier"
+          v-model="loginForm.identifier"
+          name="identifier"
+          type="email"
+          autocomplete="on"
+          placeholder="Adresse e-mail"
         />
       </el-form-item>
 
@@ -55,17 +69,16 @@
         </span>
       </el-form-item>
 
+      <el-checkbox v-model="loginForm.checked">J'accepte les conditions générales d'utilisation</el-checkbox>
+      <el-checkbox-group v-model="checkList"></el-checkbox-group>
       <el-button
         :loading="loading"
         type="primary"
         style="width:100%;"
         @click.native.prevent="handleLogin"
       >
-        Connexion
+        Inscription
       </el-button>
-      <router-link to="/forgot">
-        <el-button type="text">Mot de passe oublié ?</el-button>
-      </router-link>
     </el-form>
   </div>
 </template>
@@ -79,7 +92,7 @@ import { UserModule } from '@/store/modules/UserModule';
 import { isValidUsername } from '@/utils/validate';
 
 @Component({
-  name: 'Login'
+  name: 'Register'
 })
 export default class extends Vue {
   $refs!: {
@@ -104,7 +117,8 @@ export default class extends Vue {
   }
   private loginForm = {
     identifier: '',
-    password: ''
+    password: '',
+    checked: false
   }
   private loginRules = {
     identifier: [{ validator: this.validateUsername, trigger: 'blur' }],
@@ -225,8 +239,7 @@ export default class extends Vue {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: rgb(244,151,26);
-  background: linear-gradient(180deg, rgba(244,151,26,1) 0%, rgba(130,61,144,1) 100%);
+  background-color: $loginBg;
 
   .login-form {
     position: relative;

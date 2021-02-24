@@ -1,22 +1,22 @@
 <template>
   <div
-    
+
     class=""
   >
-    <SuperNavbar />
     <div
       :class="classObj"
       class="app-wrapper"
     >
       <div
-        v-if="classObj.mobile && sidebar.opened"
+        v-if="sidebar.opened"
         class="drawer-bg"
         @click="handleClickOutside"
       />
       <sidebar class="sidebar-container" />
       <div class="main-container">
-        <navbar />
+        <SuperNavbar />
         <app-main />
+        <Bottombar />
       </div>
     </div>
   </div>
@@ -28,6 +28,7 @@ import { mixins } from 'vue-class-component'
 import { DeviceType, AppModule } from './../store/modules/app'
 import { AppMain, Navbar, Sidebar } from './components'
 import SuperNavbar from './components/SuperNavbar/index.vue'
+import Bottombar from './components/Bottombar/index'
 import ResizeMixin from './mixin/resize'
 
 @Component({
@@ -36,7 +37,8 @@ import ResizeMixin from './mixin/resize'
     AppMain,
     Navbar,
     SuperNavbar,
-    Sidebar
+    Sidebar,
+    Bottombar
   }
 })
 export default class extends mixins(ResizeMixin) {
@@ -78,6 +80,8 @@ export default class extends mixins(ResizeMixin) {
   transition: margin-left .28s;
   margin-left: $sideBarWidth;
   position: relative;
+  background: rgb(244,151,26);
+  background: linear-gradient(180deg, rgba(244,151,26,1) 0%, rgba(130,61,144,1) 100%);
 }
 
 .sidebar-container {
@@ -91,11 +95,12 @@ export default class extends mixins(ResizeMixin) {
   left: 0;
   z-index: 1001;
   overflow: hidden;
+
 }
 
 .hideSidebar {
   .main-container {
-    margin-left: 54px;
+    margin-left: 0px;
   }
 
   .sidebar-container {
