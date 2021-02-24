@@ -8,7 +8,7 @@ import { PermissionModule } from '@/store/modules/PermissionModule';
 
 NProgress.configure({ showSpinner: false });
 
-const whiteList = ['/login', '/forgot'];
+const whiteList = ['/login', '/forgot', '/register'];
 
 router.beforeEach(async(to: Route, _: Route, next: any) => {
   // Start progress bar
@@ -24,14 +24,15 @@ router.beforeEach(async(to: Route, _: Route, next: any) => {
       // Check whether the user has obtained his permission roles
       if (UserModule.roles.length === 0) {
         try {
+          await UserModule.GetUserInfo();
           // Note: roles must be a object array! such as: ['admin'] or ['developer', 'editor']
           const roles = UserModule.roles;
           // Generate accessible routes map based on role
-          await PermissionModule.GenerateRoutes(roles);
+          //await PermissionModule.GenerateRoutes(roles);
           // Dynamically add accessible routes
           // console.log(PermissionModule.dynamicRoutes);
           // console.log(router);
-          router.addRoutes(PermissionModule.dynamicRoutes);
+          //router.addRoutes(PermissionModule.dynamicRoutes);
           // console.log(router);
           // Hack: ensure addRoutes is complete
           // Set the replace: true, so the navigation will not leave a history record
