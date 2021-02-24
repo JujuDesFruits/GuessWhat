@@ -77,9 +77,9 @@ export default class extends Vue {
     return AppModule.device === DeviceType.Mobile;
   }
 
-  get device() {
-    return this.device === DeviceType.Mobile;
-  }
+  // get getDevice() {
+  //   return this.device;
+  // }
 
   get avatar() {
     // return UserModule.avatar
