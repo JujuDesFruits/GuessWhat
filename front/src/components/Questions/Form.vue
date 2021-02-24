@@ -1,6 +1,9 @@
 <template>
   <el-form ref="form" class="questionForm">
-    <ValidationProvider rules="required" v-slot="{errors}">
+    Formulaire
+    <!-- rules="required" -->
+    <ValidationProvider 
+      v-slot="{errors}">
       <el-form-item>
         <el-select v-model="category" class="category" placeholder="Catégorie">
           <el-option
@@ -15,27 +18,32 @@
       </el-form-item>
       <p class="text-red-900">{{errors[0]}}</p>
     </ValidationProvider>
-    <ValidationProvider rules="required|min:3" v-slot="{errors}">
+    <ValidationProvider 
+      rules="required"    
+      v-slot="{errors}">
       <el-form-item>
         <el-input v-model="questionText" placeholder="Question" class="question" />
       </el-form-item>
       <p class="text-red-900">{{errors[0]}}</p>
     </ValidationProvider>
+
     <AnswerForm
-      v-for="(answer, index) in answers"
+      v-for="(answer, index) in answersList"
       :key="answer"
       :index="index"
       :isGood="isGoodAnswer(answer)"
       @good-answer="setGoodAnswer(answer)"
       @delete-answer="removeAnswer(answer)"
-      @change-a="answers[index] = $event"
-    />
+      @changea="setAnswer(index,$event)" 
+    /> 
 
+    <!-- BTN ADD ANSWER -->
     <el-button type="default" class="addAnswer" size="mini" @click="addAnswer" round
       ><i class="el-icon-plus el-icon-left"></i>Ajouter une réponse</el-button
     >
 
     <el-row>
+      <!-- Time Picker -->
       <el-col :span="8" :offset="0">
         <el-input-number
           v-model="dateH"
@@ -79,7 +87,7 @@
       </el-col>
     </el-row>
 
-    <el-button type="success" size="default" @click="submit">Enregistrer</el-button>
+    <el-button type="submit" size="default" @click="submit">Enregistrer</el-button>
 
     <!-- <v-btn @click="clear">clear</v-btn> -->
   </el-form>
@@ -87,10 +95,18 @@
 
 <script lang="ts">
 import axios from "axios";
-import { ValidationProvider, extend } from "vee-validate";
+import { ValidationProvider, extend, validate } from "vee-validate";
 import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 import AnswerForm from "./Answer/AnswerForm.vue";
 import { IQuestion } from "../../types/Question";
+
+extend('required', value => {
+    return value != null || value != '';
+})
+
+extend('min', value => {
+    return value != null || value != '';
+})
 
 @Component({
   name: "QuestionForm",
@@ -103,7 +119,7 @@ export default class QuestionForm extends Vue {
   public question: IQuestion[] = [];
 
   private questionText = "";
-  private answers: Array<String|null> = [null, null];
+  private answersList: Array<String|null> = [null, null];
   private soluce = "";
   private category = "";
   private categories: Array<String> = ["Sport", "Musique", "Cinéma", "Politique"];
@@ -113,6 +129,19 @@ export default class QuestionForm extends Vue {
   private dateH = 1;
   private dateM = 0;
   private dateS = 0;
+
+  private setAnswer(index: number, value: string) {
+    console.log(this.answersList[index]);
+    // this.answersList[index] = value;    // change bug (re-set all anwsers on view not in var) 
+    console.log('params',this.answersList);
+  }
+
+  private addAnswer() {
+    console.log(this.answersList);
+    const answ = this.answersList.length + 1; // une valeur par déf. différente à chaque fois
+    // this.soluce = ""; // reset de la bonne réponse (optionnel)answ.toString()
+    this.answersList.push(null);
+  }
 
   private setGoodAnswer(ans: string) {
     this.soluce = ans;
@@ -126,51 +155,66 @@ export default class QuestionForm extends Vue {
     return answer == this.getGoodAnswer ? true : false;
   }
 
-  private addAnswer() {
-    const answ = null; // une valeur par déf. différente à chaque fois
-    // this.soluce = ""; // reset de la bonne réponse (optionnel)
-    this.answers.push(answ);
-  }
-
   private removeAnswer(answer: string) {
-    const index = this.answers.indexOf(answer);
+    const index = this.answersList.indexOf(answer);
     if (index > -1) {
-      this.answers.splice(index, 1);
+      this.answersList.splice(index, 1);
     }
   }
 
   private chooseHour() {
-    console.log(this.dateH);
     if (this.dateH == 0 && this.dateM == 0) {
       this.dateM = 10;
     }; 
   }
 
   private chooseMin() {
-    console.log(this.dateH);
     if (this.dateH == 0 && this.dateM == 0) {
       this.dateH = 1;
     }; 
   }
 
   private submit() {
-    this.dateEnd = new Date();
-    this.dateEnd.setHours(this.dateH);
-    this.dateEnd.setMinutes(this.dateM);
-    this.dateEnd.setSeconds(this.dateS);
+    if (this.validate()) {
+
+      this.dateEnd = new Date();
+      this.dateEnd.setHours(this.dateH);
+      this.dateEnd.setMinutes(this.dateM);
+      this.dateEnd.setSeconds(this.dateS);
+      
+      const quest = {
+        userPseudo: "Jacques",
+        dateStart: new Date(),
+        dateEnd: this.dateEnd,
+        category: this.category,
+        question: this.questionText,
+        like: 0,
+        answers: this.answersList,
+        soluce: this.soluce,
+        lang: "fr"
+      };
+      console.log(quest);
+    } else {
+      console.log('not full')
+    }
     
-    const quest = {
-      userPseudo: "Jacques",
-      dateStart: new Date(),
-      dateEnd: this.dateEnd,
-      category: this.category,
-      question: this.questionText,
-      like: 0,
-      answers: this.answers,
-      soluce: this.soluce,
-      lang: "fr"
-    };
-    console.log(quest);
+    
+  }
+
+  private validate() {
+    let valid = true;
+    if (this.questionText == '') {
+      console.log('question empty');
+      valid = false;} // Question
+    if (this.soluce == '') {valid = false;
+      console.log('Solution empty');
+    } // Solution
+    this.answersList.forEach(element => { // Réponses
+      if (element == null || element == "") {valid = false;
+      console.log('An answer empty');
+      }
+    });
+    return valid;
   }
 
   // submit() {

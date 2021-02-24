@@ -22,7 +22,9 @@
         </div>
       </el-col>
       <el-col :span="18">
-        <ValidationProvider rules="required|egal" v-slot="{ errors }">
+        <!-- rules="required|egal" -->
+        <ValidationProvider 
+         v-slot="{errors}">
           <el-input
             label="Answer"
             v-model="answer"
@@ -31,7 +33,7 @@
             @change="changeAnswer"
             clearable
           ></el-input>
-          <p class="text-red-900">{{ errors[0] }}</p>
+          <p class="text-red-900">{{errors[0]}}</p>
         </ValidationProvider>
       </el-col>
       <el-col :span="3" class="right-container">
@@ -77,16 +79,18 @@ export default class AnswerForm extends Vue {
   private answer = "";
 
   private isGoodAnswer() {
+    console.log('Trigger Good answer setted');
     this.$emit("good-answer",this.answer);
   }
 
   private deleteAnswer() {
+    console.log('Trigger delete');
     this.$emit("delete-answer");
   }
 
   private changeAnswer() {
-    
-    this.$emit("change-a",this.answer);
+    console.log('Trigger change');
+    if (this.answer != "") this.$emit("changea",this.answer);
   }
 }
 </script>
