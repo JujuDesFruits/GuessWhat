@@ -23,7 +23,7 @@
       v-slot="{errors}">
       <el-form-item
       style="margin: 3vh">
-        <el-input v-model="questionText" placeholder="Question" class="question shadow" />
+        <el-input v-model="questionText" placeholder="Écrit ta question" class="question shadow" />
       </el-form-item>
       <p class="text-red-900">{{errors[0]}}</p>
     </ValidationProvider>
@@ -41,7 +41,7 @@
     /> 
 
     <!-- BTN ADD ANSWER -->
-    <el-button type="default" class="addAnswer" style="margin: 1vh" size="mini" @click="addAnswer" round
+    <el-button type="default" class="addAnswer shadow-btn" style="margin: 1vh" size="mini" @click="addAnswer" round
       ><i class="el-icon-plus t-violet bold"></i></el-button
     >
 
