@@ -1,14 +1,14 @@
 <template>
-  <el-form ref="form" class="questionForm">
-    Formulaire
+  <el-form ref="form" class="center-text-align">
     <!-- rules="required" -->
     <ValidationProvider 
       v-slot="{errors}">
-      <el-form-item>
-        <el-select v-model="category" class="category" placeholder="Catégorie">
+      <el-form-item
+      style="margin: 3vh">
+        <el-select v-model="category" class="category shadow t-violet" placeholder="Catégorie">
           <el-option
             v-for="cat in categories"
-            class="category-option"
+            class="category-option t-violet"
             :key="cat"
             :label="cat"
             :value="cat"
@@ -21,8 +21,9 @@
     <ValidationProvider 
       rules="required"    
       v-slot="{errors}">
-      <el-form-item>
-        <el-input v-model="questionText" placeholder="Question" class="question" />
+      <el-form-item
+      style="margin: 3vh">
+        <el-input v-model="questionText" placeholder="Question" class="question shadow" />
       </el-form-item>
       <p class="text-red-900">{{errors[0]}}</p>
     </ValidationProvider>
@@ -31,63 +32,75 @@
       v-for="(answer, index) in answersList"
       :key="answer"
       :index="index"
+      class="shadow"
       :isGood="isGoodAnswer(answer)"
       @good-answer="setGoodAnswer(answer)"
       @delete-answer="removeAnswer(answer)"
       @changea="setAnswer(index,$event)" 
+      style=""
     /> 
 
     <!-- BTN ADD ANSWER -->
-    <el-button type="default" class="addAnswer" size="mini" @click="addAnswer" round
-      ><i class="el-icon-plus el-icon-left"></i>Ajouter une réponse</el-button
+    <el-button type="default" class="addAnswer" style="margin: 1vh" size="mini" @click="addAnswer" round
+      ><i class="el-icon-plus t-violet bold"></i></el-button
     >
 
-    <el-row>
+    <el-row style="margin-top: 2vh">
       <!-- Time Picker -->
-      <el-col :span="8" :offset="0">
+      <el-col :span="8" :offset="0"
+          class="shadow"
+      >
         <el-input-number
           v-model="dateH"
-          size="normal"
+          size="medium"
           :min="0"
           :max="150"
           :step="1"
-          :controls="true"
-          @change="chooseHour()"
-          controls-position="both"
+          :controls="false"
+          class="shadow t-black"
+          style="width: 100px;"
+          @change="chooseHour"
         >
         </el-input-number>
-        h
+        <span class="t-violet bold" style="margin: 5vh;">h</span>
       </el-col>
-      <el-col :span="8" :offset="0">
+      <el-col :span="8" :offset="0"
+          class="shadow"
+      >
         <el-input-number
           v-model="dateM"
-          size="normal"
+          size="medium"
           :min="0"
           :max="60"
           :step="1"
-          :controls="true"
+          :controls="false"
+          class="shadow t-black"
+          style="width: 100px;"
           @change="chooseMin"
-          controls-position="both"
         >
         </el-input-number>
-        min
+        <span class="t-violet bold" style="margin: 5vh;">min</span>
       </el-col>
-      <el-col :span="8" :offset="0">
+      <el-col :span="8" :offset="0"
+          class="shadow"
+      >
         <el-input-number
           v-model="dateS"
-          size="normal"
+          size="medium"
           :min="0"
           :max="60"
           :step="1"
-          :controls="true"
-          controls-position="both"
+          class="shadow t-black"
+          style="width: 100px;"
+          :controls="false"
         >
         </el-input-number>
-        sec
+        <span class="t-violet bold" style="margin: 5vh;">sec</span>
       </el-col>
     </el-row>
-
-    <el-button type="submit" size="default" @click="submit">Enregistrer</el-button>
+    <el-row style="margin: 4vh;">
+      <el-button type="submit" class="rounded shadow-btn t-violet bold" size="default" @click="submit">Enregistrer</el-button>
+    </el-row>
 
     <!-- <v-btn @click="clear">clear</v-btn> -->
   </el-form>
@@ -235,9 +248,7 @@ export default class QuestionForm extends Vue {
 </script>
 
 <style lang="scss">
-.questionForm {
-  text-align: center;
-}
+
 .question .el-input__inner,
 .category .el-input__inner,
 .category-option {
@@ -250,6 +261,7 @@ export default class QuestionForm extends Vue {
 }
 
 .addAnswer i {
-  margin-right: 5px;
+  // margin-right: 5px;
 }
+
 </style>

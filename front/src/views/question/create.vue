@@ -1,17 +1,19 @@
 <template>
   <page-container>
-    coucou
+    <QuestionForm />
   </page-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import PageContainer from "@/components/PageContainer.vue";
+import QuestionForm from "@/components/Questions/Form.vue";
 
 @Component({
   name: 'QuestionCreate',
   components: {
-    PageContainer
+    PageContainer,
+    QuestionForm
   },
 })
 export default class extends Vue {

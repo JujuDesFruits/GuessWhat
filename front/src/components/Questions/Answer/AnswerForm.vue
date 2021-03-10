@@ -5,7 +5,7 @@
         <div>
           <el-button
             v-if="isGood"
-            class="btn-check-answer"
+            class="btn-check-answer "
             type="success"
             icon="el-icon-check"
             size="mini"
@@ -13,7 +13,7 @@
           ></el-button>
           <el-button
             v-else
-            icon="el-icon-check"
+            icon="el-icon-check t-violet"
             class="btn-check-answer"
             @click="isGoodAnswer"
             size="mini"
