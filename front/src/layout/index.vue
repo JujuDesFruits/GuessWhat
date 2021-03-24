@@ -28,7 +28,7 @@ import { mixins } from 'vue-class-component'
 import { DeviceType, AppModule } from './../store/modules/app'
 import { AppMain, Navbar, Sidebar } from './components'
 import SuperNavbar from './components/SuperNavbar/index.vue'
-import Bottombar from './components/Bottombar/index'
+import Bottombar from './components/Bottombar/index.vue'
 import ResizeMixin from './mixin/resize'
 
 @Component({

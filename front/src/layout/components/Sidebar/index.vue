@@ -53,7 +53,7 @@ import variables from './../../../styles/_variables.scss'
   }
 })
 export default class extends Vue {
-  private getRouteObj(routename) {
+  private getRouteObj(routename: any) {
     for (let index = 0; index < (this.$router as any).options.routes.length; index++) {
       const element = (this.$router as any).options.routes[index];
       if (element.name == routename) {

@@ -36,16 +36,6 @@ export const constantRoutes: RouteConfig[] = [
     component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue'),
     meta: { hidden: true }
   },
-
-  {
-    path: '/about',
-    name: 'About',
-    meta: { hidden: true },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
   {
     path: '/top-questions',
     component: Layout,
@@ -94,6 +84,36 @@ export const constantRoutes: RouteConfig[] = [
         meta: {
           title: 'Mon compte',
           icon: 'podium-gold'
+        }
+      },
+      {
+        path: 'me',
+        name: 'Infos Personnelles',
+        component: () => import(/* webpackChunkName: "infos" */ '@/views/profile/infos.vue'),
+        meta: {
+          title: 'Infos Personnelles',
+          icon: 'podium-gold',
+          hidden: true
+        }
+      },
+      {
+        path: 'settings',
+        name: 'Paramètres',
+        component: () => import(/* webpackChunkName: "settings" */ '@/views/profile/settings.vue'),
+        meta: {
+          title: 'Paramètres',
+          icon: 'podium-gold',
+          hidden: true
+        }
+      },
+      {
+        path: 'settings/edit/password',
+        name: 'Mot de passe',
+        component: () => import(/* webpackChunkName: "edit-password" */ '@/views/profile/edit-password.vue'),
+        meta: {
+          title: 'Mot de passe',
+          icon: 'podium-gold',
+          hidden: true
         }
       }
     ]
@@ -221,7 +241,24 @@ export const constantRoutes: RouteConfig[] = [
         }
       }
     ]
-  }
+  },
+  {
+    path: '/rules',
+    component: Layout,
+    name: 'Règles',
+    meta: { hidden: false },
+    children: [
+      {
+        path: '',
+        name: 'Règles Page',
+        component: () => import(/* webpackChunkName: "rules" */ '@/views/rules.vue'),
+        meta: {
+          title: 'Règles du jeu',
+          icon: 'podium-gold'
+        }
+      }
+    ]
+  },
   // {
   //   path: '/categorie',
   //   redirect: '/categorie/all',
