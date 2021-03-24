@@ -38,10 +38,14 @@
           <el-col :span="4"><svg-icon name="right_arrow"/></el-col>
         </el-row>
         </router-link>
+        <router-link
+          to="/profile/settings"
+        >
         <el-row class="menu-item">
           <el-col :span="17" :offset="3">Paramètres</el-col>
           <el-col :span="4"><svg-icon name="right_arrow"/></el-col>
         </el-row>
+        </router-link>
       </el-main>
     </el-container>
 

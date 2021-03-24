@@ -95,6 +95,16 @@ export const constantRoutes: RouteConfig[] = [
           icon: 'podium-gold',
           hidden: true
         }
+      },
+      {
+        path: 'settings',
+        name: 'Paramètres',
+        component: () => import(/* webpackChunkName: "settings" */ '@/views/profile/settings.vue'),
+        meta: {
+          title: 'Paramètres',
+          icon: 'podium-gold',
+          hidden: true
+        }
       }
     ]
   },
