@@ -7,7 +7,6 @@
       </el-header>
         <el-container direction="vertical">
           <el-main>
-            <formQuestion ></formQuestion>
             <div>
               <itemQuestion v-for="question in questions" :key="question.id" :question="question"></itemQuestion>
             </div>
