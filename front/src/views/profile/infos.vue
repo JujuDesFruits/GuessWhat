@@ -4,7 +4,11 @@
       <el-header height="" class="informations-title">
         <!-- Header content -->
         <el-row class="">
+          <router-link
+          to="/profile"
+        >
           <el-col :span="4" :offset="3" style="margin: 1.8em 0;"><svg-icon style="width: 1.4em; height: 1.4em;"  name="right_arrow" class="rotate"/></el-col>
+          </router-link>
           <el-col :span="17" ><h1>MES INFOS</h1></el-col>
         </el-row>
       </el-header>
