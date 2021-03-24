@@ -30,11 +30,11 @@ export default class extends Vue {
   }
 
   private verifyAnswer() {
-    return this.answer == this.question.soluce ? true : false;
+    return this.answer == this.question.correctAnswer;
   }
 
   private checkPlain() {
-    return this._clicked ? false : true;
+    return !this._clicked;
   }
 
   private checkIconButton() {

@@ -1,4 +1,3 @@
-import { IQuestion } from './../../types/Question.d';
 import { DateType } from 'element-ui/types/calendar';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 // import WithRender from './to-do-form.html';
@@ -12,9 +11,9 @@ export default class QuestionForm extends Vue {
   public userPseudo: string = 'Jacques';
 
   public dateStart: DateType = Date();
-  
+
   public dateEnd: DateType = Date();
-  
+
   public question: string = '';
 
   public category: string = '';
