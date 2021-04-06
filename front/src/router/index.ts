@@ -37,8 +37,13 @@ export const constantRoutes: RouteConfig[] = [
     meta: { hidden: true }
   },
   {
+    path: '/401',
+    component: () => import(/* webpackChunkName: "401" */ '@/views/401.vue'),
+    meta: { hidden: true }
+  },
+  {
     path: '/400',
-    component: () => import(/* webpackChunkName: "404" */ '@/views/400.vue'),
+    component: () => import(/* webpackChunkName: "400" */ '@/views/400.vue'),
     meta: { hidden: true }
   },
   {
