@@ -32,7 +32,7 @@ export const constantRoutes: RouteConfig[] = [
     meta: { hidden: true, title: 'Mot de passe oublié' }
   },
   {
-    path: '/404',
+    path: '*',
     component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue'),
     meta: { hidden: true }
   },
