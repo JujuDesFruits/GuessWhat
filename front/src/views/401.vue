@@ -6,7 +6,7 @@
     <div class="center shado ">
       <p>Oups .. </p>
       <p>Une erreur est survenue ! </p>
-      <p>Cette page n'existe pas.</p>
+      <p>Vous n'êtes pas autorisé à venir ici.</p>
       <a href="">
         <el-button el-button class="rounded t-violet bold" size="small">Revenir </el-button>
       </a>
@@ -21,10 +21,10 @@
   } from 'vue-property-decorator'
 
   @Component({
-    name: 'Page404'
+    name: 'Page401'
   })
   export default class extends Vue {
-    private message = '404 Page Not Found'
+    private message = '401 Unauthorzied'
   }
 
 </script>

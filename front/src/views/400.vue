@@ -6,7 +6,6 @@
     <div class="center shado ">
       <p>Oups .. </p>
       <p>Une erreur est survenue ! </p>
-      <p>Cette page n'existe pas.</p>
       <a href="">
         <el-button el-button class="rounded t-violet bold" size="small">Revenir </el-button>
       </a>
@@ -21,10 +20,10 @@
   } from 'vue-property-decorator'
 
   @Component({
-    name: 'Page404'
+    name: 'Page400'
   })
   export default class extends Vue {
-    private message = '404 Page Not Found'
+    private message = '400 Bad Request'
   }
 
 </script>
