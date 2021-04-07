@@ -32,11 +32,6 @@ export const constantRoutes: RouteConfig[] = [
     meta: { hidden: true, title: 'Mot de passe oublié' }
   },
   {
-    path: '*',
-    component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue'),
-    meta: { hidden: true }
-  },
-  {
     path: '/401',
     component: () => import(/* webpackChunkName: "401" */ '@/views/401.vue'),
     meta: { hidden: true }
@@ -129,7 +124,7 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/categorie',
+    path: '/categories',
     component: Layout,
     name: 'Catégories',
     meta: { hidden: true },
@@ -145,12 +140,12 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/categorie',
+    path: '/sport',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie" },
+    meta: { hidden: false, title: "Catégorie Sport" },
     children: [
       {
-        path: 'sport',
+        path: '',
         name: 'Sport',
         component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/sport.vue'),
         meta: {
@@ -161,12 +156,12 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/categorie',
+    path: '/music',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie" },
+    meta: { hidden: false, title: "Catégorie Musique" },
     children: [
       {
-        path: 'music',
+        path: '',
         name: 'Musique',
         component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
         meta: {
@@ -177,12 +172,12 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/categorie',
+    path: '/politic',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie" },
+    meta: { hidden: false, title: "Catégorie Politique" },
     children: [
       {
-        path: 'politic',
+        path: '',
         name: 'Politique',
         component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
         meta: {
@@ -193,12 +188,12 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/categorie',
+    path: '/theater',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie" },
+    meta: { hidden: false, title: "Catégorie Cinéma" },
     children: [
       {
-        path: 'cinema',
+        path: '',
         name: 'Cinéma',
         component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
         meta: {
@@ -207,7 +202,19 @@ export const constantRoutes: RouteConfig[] = [
         }
       }
     ]
-  },
+  },/*
+  {
+    path: '/play/:id',
+    component: Layout,
+    meta: { hidden: true, title: "Jouer" },
+    children: [
+      {
+        path: '',
+        name: 'Jouer',
+        component: () => import(/* webpackChunkName: "play" *//* '@/views/question/view.vue'),
+      }
+    ]
+  },*/
   {
     path: '/',
     component: Layout,
@@ -236,7 +243,7 @@ export const constantRoutes: RouteConfig[] = [
     children: [
       {
         path: 'list',
-        component: () => import(/* webpackChunkName: "question_list" */ '@/views/question/create.vue'),
+        component: () => import(/* webpackChunkName: "question_list" */ '@/views/question/index.vue'),
         meta: {
           title: 'Liste des questions',
           hidden: true
@@ -269,55 +276,12 @@ export const constantRoutes: RouteConfig[] = [
       }
     ]
   },
-  // {
-  //   path: '/categorie',
-  //   redirect: '/categorie/all',
-  //   component: Layout,
-  //   meta: {
-  //     title: 'Catégories',
-  //     icon: 'example',
-  //     hidden: false
-  //   },
-  //   children: [
-  //     {
-  //       path: 'sport',
-  //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/sport.vue'),
-  //       meta: {
-  //         title: 'Sport',
-  //         icon: 'soccer-field',
-  //         hidden: true
-  //       }
-  //     },
-  //     {
-  //       path: 'music',
-  //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
-  //       meta: {
-  //         title: 'Musique',
-  //         icon: 'music',
-  //         hidden: false
-  //       }
-  //     },
-  //     {
-  //       path: 'politic',
-  //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
-  //       meta: {
-  //         title: 'Politique',
-  //         icon: 'scale-balance',
-  //         hidden: false
-  //       }
-  //     },
-  //     {
-  //       path: 'cinema',
-  //       component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
-  //       meta: {
-  //         title: 'Cinéma',
-  //         icon: 'theater',
-  //         hidden: false
-  //       }
-  //     }
-  //   ]
-  // }
-  ];
+  {
+    path: '*',
+    component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue'),
+    meta: { hidden: true }
+  },
+];
 
 /**
  * asyncRoutes

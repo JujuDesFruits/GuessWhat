@@ -8,6 +8,13 @@ export const createQuestion = (data: CreateQuestionData) =>
     data
   });
 
+export const getQuestions = () =>
+  request({
+    url: '/questions/',
+    method: 'get'
+  });
+
 export default {
-  createQuestion
+  createQuestion,
+  getQuestions
 };

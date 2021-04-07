@@ -2,7 +2,7 @@ export interface IQuestion {
   id: number
   createdBy?: string
   dateStart?: date
-  dateEnd: date
+  endDate: date
   category: string
   name: string
   like?: number

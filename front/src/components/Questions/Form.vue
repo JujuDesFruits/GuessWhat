@@ -211,6 +211,7 @@ export default class QuestionForm extends Vue {
         name: this.questionText,
         answers: Object.values(answersId),
         correctAnswer: answersId[this.answersList[this.soluce]],
+        category: this.category
       };
       console.log(quest);
       const {data} = await QuestionAPI.createQuestion(quest);

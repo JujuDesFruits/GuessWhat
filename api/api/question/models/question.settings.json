@@ -25,6 +25,9 @@
     },
     "dateStart": {
       "type": "datetime"
+    },
+    "category": {
+      "type": "string"
     }
   }
 }

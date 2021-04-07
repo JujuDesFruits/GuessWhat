@@ -8,7 +8,7 @@
       </el-col>
       <el-col :span="8" class="item">
         <router-link
-          to="/question/create"
+          to="/question"
         >
           <el-button type="primary" round class="play-button">PLAY</el-button>
         </router-link>
