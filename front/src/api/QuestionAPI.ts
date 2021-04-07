@@ -14,7 +14,21 @@ export const getQuestions = () =>
     method: 'get'
   });
 
+export const getQuestionsByCategory = (category: string) =>
+  request({
+    url: `/questions/?category=${category}`,
+    method: 'get'
+  });
+
+export const getQuestionById = (id: string) =>
+  request({
+    url: `/questions/${id}`,
+    method: 'get'
+  });
+
 export default {
   createQuestion,
-  getQuestions
+  getQuestions,
+  getQuestionsByCategory,
+  getQuestionById
 };
