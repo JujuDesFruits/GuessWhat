@@ -115,8 +115,6 @@ import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 import AnswerForm from "./Answer/AnswerForm.vue";
 import { IQuestion } from "../../types/Question";
 import AnswerAPI from "@/api/AnswerAPI";
-import ListItem
-  from "../../../../api/.cache/plugins/strapi-plugin-content-manager/admin/src/components/SelectMany/ListItem";
 import QuestionAPI from "@/api/QuestionAPI";
 
 extend('required', value => {
