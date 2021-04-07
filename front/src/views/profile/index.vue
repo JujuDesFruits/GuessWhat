@@ -46,6 +46,10 @@
           <el-col :span="4"><svg-icon name="right_arrow"/></el-col>
         </el-row>
         </router-link>
+        <el-row class="menu-item" @click="logout">
+          <el-col :span="17" :offset="3" @click="logout">Déconnexion</el-col>
+          <el-col :span="4"><svg-icon name="right_arrow" @click="logout"/></el-col>
+        </el-row>
       </el-main>
     </el-container>
 
@@ -86,6 +90,11 @@ export default class extends Vue {
       this.$message.error('L\'avatar ne peut pas excéder 2Mb !');
     }
     return isJPG && isLt2M;
+  }
+
+  private async logout() {
+      await UserModule.ResetToken()
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
   }
 }
 </script>
