@@ -155,7 +155,7 @@ export default class QuestionForm extends Vue {
     this.answersList.push("");
   }
 
-  private setGoodAnswer(ans: number) {
+  private setGoodAnswer(ans: number) {    
     this.soluce = ans;
   }
 
@@ -227,7 +227,7 @@ export default class QuestionForm extends Vue {
     if (this.questionText == '') {
       console.log('question empty');
       valid = false;} // Question
-    if (this.soluce == null) {valid = false;
+    if (this.soluce === null) {valid = false;
       console.log('Solution empty');
     } // Solution
     this.answersList.forEach(element => { // Réponses
