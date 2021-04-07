@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="supernav-items" style="float: left">
       <div class="logo-container" @click="toggleSideBar">
-        <el-image style="width: 100; height: 45px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="contain" ></el-image>
+        <el-image style="width: 100; height: 45px" src="/logo_shadow_2.png" fit="contain" ></el-image>
         </div>
       <el-button-group class="btn-group-supernav" v-if="!isMobile()" >
         <router-link :to="{name: 'TopQuestionsPage'}">
