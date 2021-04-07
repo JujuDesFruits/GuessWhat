@@ -1,9 +1,22 @@
 <template>
-  <div class="navbar">
-    <div class="supernav-items" style="float: left">
-      <div class="logo-container" @click="toggleSideBar">
-        <el-image style="width: 100; height: 45px" src="/logo_shadow_2.png" fit="contain" ></el-image>
-        </div>
+  <div class="navbar" style="overflow:visible">
+    <div class="supernav-items" >
+      <div style="margin: 15px 0px 0px 20px;">
+        <svg-icon style="width: 1.9em;color: white;height: 1.8em;" @click="toggleSideBar" name="hamburger" />
+      </div>
+      <div class="logo-container">
+        <router-link to="/question/list" >
+          <el-image style="width: 100; height: 45px" src="/logo_shadow_2.png" fit="contain" ></el-image>
+        </router-link>
+      </div>
+      <div style="margin: 18px 18px 0px 0px">
+        <router-link to="/question/create" >
+            <el-button  class="shadow-btn" style="float: right;" icon="el-icon-plus" circle size="mini"></el-button>
+
+            <!-- <i class="el-icon-plus" style="color:white;font-weight:bold"></i> -->
+        </router-link>
+        <!-- <svg-icon style="width: 1.9em;color: white;height: 1.8em;"  name="plus" class=""/> -->
+      </div>
       <el-button-group class="btn-group-supernav" v-if="!isMobile()" >
         <router-link :to="{name: 'TopQuestionsPage'}">
           <el-button type="light" size="small">
@@ -18,9 +31,9 @@
           >
         </router-link>
       </el-button-group>
-      <el-input v-model="data.searchText" placeholder="Rechercher" size="small" prefix-icon="el-icon-search" clearable @change="onSearch()"></el-input>
+      <!-- <el-input v-model="data.searchText" placeholder="Rechercher" size="small" prefix-icon="el-icon-search" clearable @change="onSearch()"></el-input> -->
     </div>
-    <div class="right-menu">
+    <!-- <div class="right-menu">
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
@@ -37,7 +50,7 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -104,7 +117,8 @@ export default class extends Vue {
   .logo-container {
     // display: inline-block;
     width: 100px;
-    margin-top: 2px;
+    margin: auto;
+    margin-top: 13px;
   }
   .el-input {
     width: 200px !important;
