@@ -1,7 +1,7 @@
 <template>
   <el-form ref="form" class="center-text-align">
     <!-- rules="required" -->
-    <ValidationProvider 
+    <ValidationProvider
       v-slot="{errors}">
       <el-form-item
       style="margin: 3vh">
@@ -18,8 +18,8 @@
       </el-form-item>
       <p class="text-red-900">{{errors[0]}}</p>
     </ValidationProvider>
-    <ValidationProvider 
-      rules="required"    
+    <ValidationProvider
+      rules="required"
       v-slot="{errors}">
       <el-form-item
       style="margin: 3vh">
@@ -28,17 +28,19 @@
       <p class="text-red-900">{{errors[0]}}</p>
     </ValidationProvider>
 
-    <AnswerForm
+    <keep-alive
       v-for="(answer, index) in answersList"
-      :key="answer"
-      :index="index"
-      class="shadow"
-      :isGood="isGoodAnswer(answer)"
-      @good-answer="setGoodAnswer(answer)"
-      @delete-answer="removeAnswer(answer)"
-      @changea="setAnswer(index,$event)" 
-      style=""
-    /> 
+      :key="answer">
+      <AnswerForm
+        :index="index"
+        class="shadow"
+        :isGood="isGoodAnswer(index)"
+        @good-answer="setGoodAnswer(index)"
+        @delete-answer="removeAnswer(answer)"
+        @changea="setAnswer(index,$event)"
+        style=""
+      />
+    </keep-alive>
 
     <!-- BTN ADD ANSWER -->
     <el-button type="default" class="addAnswer shadow-btn" style="margin: 1vh" size="mini" @click="addAnswer" round
@@ -112,6 +114,10 @@ import { ValidationProvider, extend, validate } from "vee-validate";
 import { Vue, Prop, Component, Watch } from "vue-property-decorator";
 import AnswerForm from "./Answer/AnswerForm.vue";
 import { IQuestion } from "../../types/Question";
+import AnswerAPI from "@/api/AnswerAPI";
+import ListItem
+  from "../../../../api/.cache/plugins/strapi-plugin-content-manager/admin/src/components/SelectMany/ListItem";
+import QuestionAPI from "@/api/QuestionAPI";
 
 extend('required', value => {
     return value != null || value != '';
@@ -132,10 +138,10 @@ export default class QuestionForm extends Vue {
   public question: IQuestion[] = [];
 
   private questionText = "";
-  private answersList: Array<String|null> = [null, null];
-  private soluce = "";
+  private answersList: Array<string> = ["", ""];
+  private soluce: any = null;
   private category = "";
-  private categories: Array<String> = ["Sport", "Musique", "Cinéma", "Politique"];
+  private categories: Array<string> = ["Sport", "Musique", "Cinéma", "Politique"];
   // private dateStart = Date();
   private dateEnd = new Date();
 
@@ -144,19 +150,14 @@ export default class QuestionForm extends Vue {
   private dateS = 0;
 
   private setAnswer(index: number, value: string) {
-    console.log(this.answersList[index]);
-    // this.answersList[index] = value;    // change bug (re-set all anwsers on view not in var) 
-    console.log('params',this.answersList);
+    this.answersList[index] = value;
   }
 
   private addAnswer() {
-    console.log(this.answersList);
-    const answ = this.answersList.length + 1; // une valeur par déf. différente à chaque fois
-    // this.soluce = ""; // reset de la bonne réponse (optionnel)answ.toString()
-    this.answersList.push(null);
+    this.answersList.push("");
   }
 
-  private setGoodAnswer(ans: string) {
+  private setGoodAnswer(ans: number) {
     this.soluce = ans;
   }
 
@@ -165,7 +166,7 @@ export default class QuestionForm extends Vue {
   }
 
   isGoodAnswer(answer: string) {
-    return answer == this.getGoodAnswer ? true : false;
+    return answer == this.getGoodAnswer && this.getGoodAnswer !== null;
   }
 
   private removeAnswer(answer: string) {
@@ -178,40 +179,48 @@ export default class QuestionForm extends Vue {
   private chooseHour() {
     if (this.dateH == 0 && this.dateM == 0) {
       this.dateM = 10;
-    }; 
+    };
   }
 
   private chooseMin() {
     if (this.dateH == 0 && this.dateM == 0) {
       this.dateH = 1;
-    }; 
+    };
   }
 
-  private submit() {
+  private async submit() {
     if (this.validate()) {
 
-      this.dateEnd = new Date();
-      this.dateEnd.setHours(this.dateH);
-      this.dateEnd.setMinutes(this.dateM);
-      this.dateEnd.setSeconds(this.dateS);
-      
+      const currentDate = new Date();
+      let currentTime = currentDate.getTime();
+      currentTime += this.dateH * 60 * 60 * 1000
+      currentTime += this.dateM * 60 * 1000
+      currentTime += this.dateS * 1000
+      this.dateEnd = new Date(currentTime);
+
+      const answersId: any = {}
+      for( const ans in this.answersList) {
+        const answer: string = this.answersList[ans];
+        const {data} = await AnswerAPI.createAnswer({name: answer})
+        answersId[answer] = data._id;
+      }
+
       const quest = {
-        userPseudo: "Jacques",
         dateStart: new Date(),
-        dateEnd: this.dateEnd,
-        category: this.category,
-        question: this.questionText,
-        like: 0,
-        answers: this.answersList,
-        soluce: this.soluce,
-        lang: "fr"
+        endDate: this.dateEnd,
+        name: this.questionText,
+        answers: Object.values(answersId),
+        correctAnswer: answersId[this.answersList[this.soluce]],
       };
       console.log(quest);
+      const {data} = await QuestionAPI.createQuestion(quest);
+
+      this.$message.success("Question créée avec succès !")
     } else {
       console.log('not full')
     }
-    
-    
+
+
   }
 
   private validate() {
@@ -229,21 +238,6 @@ export default class QuestionForm extends Vue {
     });
     return valid;
   }
-
-  // submit() {
-  //         if (this.$refs.form.validate()) {
-  //             // Native form submission is not yet supported
-  //             axios.post("/api/submit", {
-  //                 question: this.question,
-  //                 email: this.email,
-  //                 select: this.select,
-  //                 checkbox: this.checkbox
-  //             });
-  //         }
-  //     }
-  // clear() {
-  //     this.$refs.form.reset();
-  // }
 }
 </script>
 

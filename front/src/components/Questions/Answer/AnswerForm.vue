@@ -23,7 +23,7 @@
       </el-col>
       <el-col :span="18">
         <!-- rules="required|egal" -->
-        <ValidationProvider 
+        <ValidationProvider
          v-slot="{errors}">
           <el-input
             label="Answer"
@@ -79,17 +79,14 @@ export default class AnswerForm extends Vue {
   private answer = "";
 
   private isGoodAnswer() {
-    console.log('Trigger Good answer setted');
-    this.$emit("good-answer",this.answer);
+    this.$emit("good-answer",this.index);
   }
 
   private deleteAnswer() {
-    console.log('Trigger delete');
     this.$emit("delete-answer");
   }
 
   private changeAnswer() {
-    console.log('Trigger change');
     if (this.answer != "") this.$emit("changea",this.answer);
   }
 }

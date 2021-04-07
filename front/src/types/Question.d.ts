@@ -1,12 +1,20 @@
 export interface IQuestion {
   id: number
-  userPseudo: string
-  dateStart: date
+  createdBy?: string
+  dateStart?: date
   dateEnd: date
   category: string
-  question: string
-  like: number
+  name: string
+  like?: number
   answers: string[]
-  soluce: string
-  lang: string
+  correctAnswer: string
+  lang?: string
+}
+
+export interface CreateQuestionData {
+  dateEnd: date
+  category: string
+  name: string
+  answers: string[]
+  correctAnswer: string
 }
