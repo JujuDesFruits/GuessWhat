@@ -2,7 +2,7 @@
   <div>
     <el-collapse>
       <el-collapse-item :title="question.name" name="1">
-        <Answer v-for="(rep) in question.answers" :key="rep" :question="question" :answer="rep" :hasAnswered="clicked" @answer-click="answerClicked()" />
+        <Answer v-for="(rep) in question.answers" :key="rep.id" :question="question" :answer="rep" :hasAnswered="clicked" @answer-click="answerClicked()" />
       </el-collapse-item>
     </el-collapse>
   </div>

@@ -47,7 +47,7 @@
       </div>
       <!-- Answers  -->
       <div>
-        <el-row v-for="(answer, index) in question.answers" :key="answer.name" :index="index">
+        <el-row v-for="(answer, index) in question.answers" :key="answer.id" :index="index">
           <el-button
             style="margin: 1vh;width:100%"
             @click="eventClick(answer, index)"
