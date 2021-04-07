@@ -162,7 +162,7 @@ export const constantRoutes: RouteConfig[] = [
     component: Layout,
     meta: { hidden: false, title: "Cinéma", icon: 'podium-gold' },
     redirect: '/question/list/Cinéma'
-  },/*
+  },
   {
     path: '/play/:id',
     component: Layout,
@@ -171,10 +171,10 @@ export const constantRoutes: RouteConfig[] = [
       {
         path: '',
         name: 'Jouer',
-        component: () => import(/* webpackChunkName: "play" *//* '@/views/question/view.vue'),
+        component: () => import(/* webpackChunkName: "play" */ '@/views/question/view.vue'),
       }
     ]
-  },*/
+  },
   {
     path: '/',
     component: Layout,
