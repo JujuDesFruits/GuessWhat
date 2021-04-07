@@ -116,8 +116,8 @@ export default class extends Vue {
   private async mounted() {
     const { data } = await QuestionAPI.getQuestionById(this.questionId);
     this.question = data;
-    var dateFin = new Date(data.endDate).getTime();
-    var dateCurr = Date.now();
+    const dateFin = new Date(data.endDate).getTime();
+    const dateCurr = Date.now();
     console.log(data);
     if (dateFin < dateCurr) {
       this.$router.go(-1);
@@ -141,7 +141,7 @@ export default class extends Vue {
     const currentDate = Date.now();
     return endDate < currentDate;
   }
-  
+
   getRemainTime() {
     let remain: string;
     if (!this.isOver) {
