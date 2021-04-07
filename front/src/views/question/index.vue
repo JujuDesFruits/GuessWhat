@@ -3,9 +3,7 @@
     <!-- <router-link to="/question/create" style="position: fixed;margin-top: -33px;right: 0px">
       <el-button type="danger" icon="el-icon-plus" circle></el-button>
     </router-link> -->
-    <QuestionCard v-for="question in questions" :key="question.name" :question="question">
-
-    </QuestionCard>
+    <QuestionCard v-for="question in questions" :key="question.name" :question="question"></QuestionCard>
   </page-container>
 </template>
 
