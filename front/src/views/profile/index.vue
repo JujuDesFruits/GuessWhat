@@ -22,14 +22,14 @@
             <center><b>{{username}}</b></center>
           </span>
         </el-row>
-        <!-- <router-link
-          to="/question/create"
-        > -->
+        <router-link
+          to="/profile/stats"
+        >
         <el-row class="menu-item">
           <el-col :span="17" :offset="3">Mes statistiques</el-col>
           <el-col :span="4"><svg-icon name="right_arrow"/></el-col>
         </el-row>
-        <!-- </router-link> -->
+        </router-link>
         <router-link
           to="/profile/me"
         >

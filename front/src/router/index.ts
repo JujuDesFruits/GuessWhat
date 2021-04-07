@@ -102,6 +102,16 @@ export const constantRoutes: RouteConfig[] = [
         }
       },
       {
+        path: 'stats',
+        name: 'Statistiques',
+        component: () => import(/* webpackChunkName: "settings" */ '@/views/profile/stats.vue'),
+        meta: {
+          title: 'Statistiques',
+          icon: 'podium-gold',
+          hidden: true
+        }
+      },
+      {
         path: 'settings',
         name: 'Paramètres',
         component: () => import(/* webpackChunkName: "settings" */ '@/views/profile/settings.vue'),
