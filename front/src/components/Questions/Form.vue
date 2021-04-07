@@ -30,7 +30,7 @@
 
     <keep-alive
       v-for="(answer, index) in answersList"
-      :key="answer">
+      :key="answer+index">
       <AnswerForm
         :index="index"
         class="shadow"
@@ -155,7 +155,7 @@ export default class QuestionForm extends Vue {
     this.answersList.push("");
   }
 
-  private setGoodAnswer(ans: number) {    
+  private setGoodAnswer(ans: number) {
     this.soluce = ans;
   }
 
