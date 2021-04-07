@@ -7,9 +7,7 @@
       <p>Oups .. </p>
       <p>Une erreur est survenue ! </p>
       <p>Cette page n'existe pas.</p>
-      <a href="">
-        <el-button el-button class="rounded t-violet bold" size="small">Revenir </el-button>
-      </a>
+      <el-button el-button class="rounded t-violet bold" size="small" @click="goBack">Revenir </el-button>
     </div>
   </div>
 </template>
@@ -25,6 +23,10 @@
   })
   export default class extends Vue {
     private message = '404 Page Not Found'
+
+    private goBack() {
+      this.$router.go(-1);
+    }
   }
 
 </script>

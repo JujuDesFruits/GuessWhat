@@ -142,66 +142,26 @@ export const constantRoutes: RouteConfig[] = [
   {
     path: '/sport',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie Sport" },
-    children: [
-      {
-        path: '',
-        name: 'Sport',
-        component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/sport.vue'),
-        meta: {
-          title: 'Sport',
-          icon: 'soccer-field'
-        }
-      }
-    ]
+    meta: { hidden: false, title: "Sport", icon: 'podium-gold' },
+    redirect: '/question/list/Sport'
   },
   {
     path: '/music',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie Musique" },
-    children: [
-      {
-        path: '',
-        name: 'Musique',
-        component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/music.vue'),
-        meta: {
-          title: 'Musique',
-          icon: 'music'
-        }
-      }
-    ]
+    meta: { hidden: false, title: "Musique", icon: 'podium-gold' },
+    redirect: '/question/list/Musique'
   },
   {
     path: '/politic',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie Politique" },
-    children: [
-      {
-        path: '',
-        name: 'Politique',
-        component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/politic.vue'),
-        meta: {
-          title: 'Politique',
-          icon: 'scale-balance'
-        }
-      }
-    ]
+    meta: { hidden: false, title: "Politique", icon: 'podium-gold' },
+    redirect: '/question/list/Politique'
   },
   {
     path: '/theater',
     component: Layout,
-    meta: { hidden: false, title: "Catégorie Cinéma" },
-    children: [
-      {
-        path: '',
-        name: 'Cinéma',
-        component: () => import(/* webpackChunkName: "categories" */ '@/views/categories/cinema.vue'),
-        meta: {
-          title: 'Cinéma',
-          icon: 'theater'
-        }
-      }
-    ]
+    meta: { hidden: false, title: "Cinéma", icon: 'podium-gold' },
+    redirect: '/question/list/Cinéma'
   },/*
   {
     path: '/play/:id',
@@ -242,7 +202,15 @@ export const constantRoutes: RouteConfig[] = [
     },
     children: [
       {
-        path: 'list',
+        path: 'list/:category',
+        component: () => import(/* webpackChunkName: "question_list_category" */ '@/views/question/index.vue'),
+        meta: {
+          title: 'Liste des questions',
+          hidden: true
+        }
+      },
+      {
+        path: 'list/',
         component: () => import(/* webpackChunkName: "question_list" */ '@/views/question/index.vue'),
         meta: {
           title: 'Liste des questions',

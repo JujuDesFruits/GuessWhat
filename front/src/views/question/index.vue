@@ -1,6 +1,6 @@
 <template>
   <page-container>
-    <QuestionCard v-for="question in questions" :key="question" :question="question">
+    <QuestionCard v-for="question in questions" :key="question.name" :question="question">
 
     </QuestionCard>
   </page-container>
@@ -28,8 +28,19 @@ export default class extends Vue {
     return 'Questions';
   }
 
+  get category() {
+    return this.$route.params.category;
+  }
+
   private async mounted() {
-    const { data } = await QuestionAPI.getQuestions()
+    let data: any;
+    console.log(this.category);
+    if (this.category) {
+      data = (await QuestionAPI.getQuestionsByCategory(this.category)).data;
+    }
+    else {
+      data = (await QuestionAPI.getQuestions()).data;
+    }
     this.questions = data;
     console.log(data);
   }
