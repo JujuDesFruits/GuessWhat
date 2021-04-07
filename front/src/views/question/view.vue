@@ -63,10 +63,10 @@
           v-if="isAnswered"
           class="rounded shadow-btn shadow"
           size="default"
-          @click="submit"
+          @click="submit()"
           >Valider</el-button
         >
-        <el-button v-else class="rounded shadow-btn shadow" size="default" @click="submit"
+        <el-button v-else :disabled="true" class="rounded shadow-btn shadow" size="default"
           >Valider</el-button
         >
       </div>
@@ -156,6 +156,10 @@ export default class extends Vue {
       this.minute = minutes;
       this.sec = seconds;
     }
+  }
+
+  submit() {
+    console.log(this.answer);
   }
 }
 </script>
