@@ -217,6 +217,7 @@ export default class QuestionForm extends Vue {
       const {data} = await QuestionAPI.createQuestion(quest);
 
       this.$message.success("Question créée avec succès !")
+      this.$router.push('/question/list');
     } else {
       console.log('not full')
     }
