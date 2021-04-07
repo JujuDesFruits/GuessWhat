@@ -28,6 +28,9 @@
     },
     "category": {
       "type": "string"
+    },
+    "user_answers": {
+      "collection": "user-answer"
     }
   }
 }
