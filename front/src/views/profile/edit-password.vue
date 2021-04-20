@@ -16,43 +16,44 @@
             <el-col :span="20" :offset="2">
               <el-form-item class="question">
                 <label>Mot de passe actuel</label>
-                <VuePassword
+                <!--<VuePassword
                   v-model="password1"
                   id="password1"
                   classes="force-rounded"
                   :disableStrength="true"
                   :strengthMessages="strengthMessagesFR"
-                />
+                />-->
               </el-form-item>
             </el-col>
             <el-col :span="20" :offset="2">
               <el-form-item>
                 <label>Nouveau mot de passe</label>
-                <VuePassword
+                <!--<VuePassword
                   v-model="password2"
                   id="password2"
                   classes="force-rounded"
                   :strength="strength"
                   :strengthMessages="strengthMessagesFR"
                 />
-                <password-meter style="display:none" :password="password2" @score="onScore"/>
+                <password-meter style="display:none" :password="password2" @score="onScore"/>-->
 
               </el-form-item>
             </el-col>
             <el-col :span="20" :offset="2">
               <el-form-item>
                 <label>Confirmer le mot de passe</label>
+                <!--
                 <VuePassword
                   v-model="password3"
                   id="password3"
                   classes="force-rounded"
                   :disableStrength="true"
                   :strengthMessages="strengthMessagesFR"
-                />
+                />-->
               </el-form-item>
             </el-col>
           </el-row>
-          
+
           <center>
             <el-form-item class="btns">
               <router-link to="/profile/settings">
@@ -69,32 +70,30 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import VuePassword from 'vue-password';
-import passwordMeter from "vue-simple-password-meter";
-import { UserModule } from "@/store/modules/UserModule";
-// import { UserModule } from '@/store/modules/user'
+//import VuePassword from 'vue-password';
+//import passwordMeter from "vue-simple-password-meter";
 
 @Component({
   name: "Profile",
   components: {
-    VuePassword,
-    passwordMeter
+  //  VuePassword,
+  //  passwordMeter
   },
 })
 export default class extends Vue {
   private form = {};
-  private password1 = "tot";
-  private password2 = "totoo";
-  private password3 = "totoo";
+  // private password1 = "tot";
+  // private password2 = "totoo";
+  // private password3 = "totoo";
   private strength = 1;
-  private strengthMessagesFR = ["Mot de passe très faible", "Mot de passe faible", "Mot de passe moyen", "Mot de passe fort", "Mot de passe très fort"];
-  private strengthMessagesEN = ['Very Weak Password', 'Weak Password', 'Medium Password', 'Strong Password','Very Strong Password'];
-  
+  // private strengthMessagesFR = ["Mot de passe très faible", "Mot de passe faible", "Mot de passe moyen", "Mot de passe fort", "Mot de passe très fort"];
+  //private strengthMessagesEN = ['Very Weak Password', 'Weak Password', 'Medium Password', 'Strong Password','Very Strong Password'];
+
   onSubmit() {
-    console.log('change');
+    // TODO
   }
-  onScore({ score, strength }) {
-    this.strength = score;
+  onScore(data: any) {
+    this.strength = data.score;
   }
 }
 </script>
@@ -107,8 +106,8 @@ export default class extends Vue {
   border-radius: 100px !important;
   text-align: center;
 }
-  
-  
+
+
 
   .rotate {
     transform: rotate(180deg);
@@ -136,7 +135,7 @@ export default class extends Vue {
     color: white !important;
     font-weight: bold !important;
   }
-  
+
   input.el-input__inner {
     border-radius: 100px !important;
     text-align: center !important;

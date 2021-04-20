@@ -12,7 +12,7 @@ export interface IQuestion {
 }
 
 export interface CreateQuestionData {
-  dateEnd: date
+  endDate: date
   category: string
   name: string
   answers: string[]

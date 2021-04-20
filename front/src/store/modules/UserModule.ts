@@ -77,14 +77,11 @@ class User extends VuexModule implements IUser {
         this.SET_CREATEDAT(user.createdAt)
         this.SET_POINTS(user.points)
       })
-      .catch((error: any) => {
-        console.log(error);
-      });
   }
 
   @Action
   public async ResetToken() {
-    await new Promise((resolve, reject) => {
+    await new Promise((resolve) => {
       removeToken();
       this.SET_TOKEN('');
       this.SET_ROLES([]);
