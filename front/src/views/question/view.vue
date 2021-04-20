@@ -90,7 +90,7 @@ import Timeout = NodeJS.Timeout;
 })
 export default class extends Vue {
   private isAnswered = false;
-  private answer: Object;
+  private answer = "";
   private questiond = {
     category: this.questionId,
     question: "Sport",
@@ -118,14 +118,12 @@ export default class extends Vue {
     this.question = data;
     const dateFin = new Date(data.endDate).getTime();
     const dateCurr = Date.now();
-    console.log(data);
     if (dateFin < dateCurr) {
       this.$router.go(-1);
     }
   }
 
   private eventClick(answer: any, index: number) {
-    console.log("Click on (" + index + ")", answer);
     this.answer = answer;
     if (!this.isAnswered) {
       this.isAnswered = true;
@@ -143,7 +141,6 @@ export default class extends Vue {
   }
 
   getRemainTime() {
-    let remain: string;
     if (!this.isOver) {
       let distance = Math.abs(new Date(this.question.endDate).getTime() - Date.now());
       const hours = Math.floor(distance / 3600000);
@@ -151,7 +148,6 @@ export default class extends Vue {
       const minutes = Math.floor(distance / 60000);
       distance -= minutes * 60000;
       const seconds = Math.floor(distance / 1000);
-      remain = `${hours}h${minutes}m${seconds}s`;
       this.heure = hours;
       this.minute = minutes;
       this.sec = seconds;
@@ -159,7 +155,7 @@ export default class extends Vue {
   }
 
   submit() {
-    console.log(this.answer);
+    // TODO
   }
 }
 </script>

@@ -109,9 +109,8 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import { ValidationProvider, extend, validate } from "vee-validate";
-import { Vue, Prop, Component, Watch } from "vue-property-decorator";
+import { ValidationProvider, extend } from "vee-validate";
+import { Vue, Component } from "vue-property-decorator";
 import AnswerForm from "./Answer/AnswerForm.vue";
 import { IQuestion } from "../../types/Question";
 import AnswerAPI from "@/api/AnswerAPI";
@@ -207,17 +206,15 @@ export default class QuestionForm extends Vue {
         dateStart: new Date(),
         endDate: this.dateEnd,
         name: this.questionText,
-        answers: Object.values(answersId),
-        correctAnswer: answersId[this.answersList[this.soluce]],
+        answers: Object.values(answersId) as string[],
+        correctAnswer: answersId[this.answersList[this.soluce]] as string,
         category: this.category
       };
-      console.log(quest);
-      const {data} = await QuestionAPI.createQuestion(quest);
+      await QuestionAPI.createQuestion(quest);
 
       this.$message.success("Question créée avec succès !")
       this.$router.push('/question/list');
     } else {
-      console.log('not full')
     }
 
 
@@ -226,14 +223,12 @@ export default class QuestionForm extends Vue {
   private validate() {
     let valid = true;
     if (this.questionText == '') {
-      console.log('question empty');
       valid = false;} // Question
     if (this.soluce === null) {valid = false;
-      console.log('Solution empty');
     } // Solution
     this.answersList.forEach(element => { // Réponses
-      if (element == null || element == "") {valid = false;
-      console.log('An answer empty');
+      if (element == null || element == "") {
+        valid = false;
       }
     });
     return valid;

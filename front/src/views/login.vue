@@ -66,6 +66,10 @@
       <router-link to="/forgot">
         <el-button type="text">Mot de passe oublié ?</el-button>
       </router-link>
+      <br/>
+      <router-link to="/register">
+        <el-button type="text">Pas de compte ? Inscrivez-vous ici ?</el-button>
+      </router-link>
     </el-form>
   </div>
 </template>

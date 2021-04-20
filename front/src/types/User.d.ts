@@ -13,6 +13,12 @@ export interface UserLoginOptions {
   password: string
 }
 
+export interface UserRegisterOptions {
+  email: string
+  username: string
+  password: string
+}
+
 export interface UserForgotPassword {
   email: string
 }

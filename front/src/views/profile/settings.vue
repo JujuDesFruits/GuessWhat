@@ -21,14 +21,15 @@
             <el-divider class="divider" direction="horizontal" content-position="center"></el-divider>
           </el-col>
         </el-row>
-        <router-link
+        <!--<router-link
           to="/profile/settings/edit/password"
-        >
+        >-->
           <center>
             <el-button class="rounded t-violet bold" size="small">Modifier</el-button>
           </center>
+        <!--
         </router-link>
-        
+        -->
         <el-row class="head options">
           <el-col :span="17" :offset="3">
             <span>
@@ -107,11 +108,11 @@ export default class extends Vue {
   triggerClick(subjet: string,choice: string) {
     switch(subjet) {
       case 'notif':
-        if(choice == "Oui") this.notifications = true 
+        if(choice == "Oui") this.notifications = true
         else this.notifications = false;
         break;
       case 'newsletters':
-        if(choice == "Oui") this.newsletters = true 
+        if(choice == "Oui") this.newsletters = true
         else this.newsletters = false;
         break;
     }

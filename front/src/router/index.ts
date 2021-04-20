@@ -121,16 +121,18 @@ export const constantRoutes: RouteConfig[] = [
           hidden: true
         }
       },
+      /*
       {
         path: 'settings/edit/password',
         name: 'Mot de passe',
-        component: () => import(/* webpackChunkName: "edit-password" */ '@/views/profile/edit-password.vue'),
-        meta: {
+        component: () => import(/* webpackChunkName: "edit-password" */ /*'@/views/profile/edit-password.vue'),
+        /*meta: {
           title: 'Mot de passe',
           icon: 'podium-gold',
           hidden: true
         }
-      }
+      }*/
+
     ]
   },
   {

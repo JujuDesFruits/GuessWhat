@@ -1,5 +1,5 @@
 import request from '@/utils/request';
-import {UserForgotPassword, UserLoginOptions} from '@/types/User';
+import {UserForgotPassword, UserLoginOptions, UserRegisterOptions} from '@/types/User';
 
 export const login = (data: UserLoginOptions) =>
   request({
@@ -27,9 +27,17 @@ export const getUserInfo = () =>
     method: 'get'
   });
 
+export const register = (data: UserRegisterOptions) =>
+  request({
+    url: '/auth/local/register',
+    method: 'post',
+    data
+  });
+
 export default {
   login,
   logout,
   forgotPassword,
-  getUserInfo
+  getUserInfo,
+  register
 };
