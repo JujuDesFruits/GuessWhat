@@ -61,8 +61,7 @@ export default class extends Vue {
   };
 
   private onSearch() {
-    console.log(this.data.searchText);
-
+    // TODO
   }
 
   get sidebar() {
@@ -70,7 +69,7 @@ export default class extends Vue {
   }
 
   goBack() {
-    console.log("go back");
+    // TODO
   }
 
   private isMobile() {

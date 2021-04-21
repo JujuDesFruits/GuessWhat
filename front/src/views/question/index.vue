@@ -35,7 +35,6 @@ export default class extends Vue {
 
   private async mounted() {
     let data: any;
-    console.log(this.category);
     if (this.category) {
       data = (await QuestionAPI.getQuestionsByCategory(this.category)).data;
     }
@@ -43,7 +42,6 @@ export default class extends Vue {
       data = (await QuestionAPI.getQuestions()).data;
     }
     this.questions = data;
-    console.log(data);
   }
 
 }
